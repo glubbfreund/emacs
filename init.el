@@ -121,7 +121,18 @@
 ;; Install pdf-loader for fast startup while beeing able to load pdfs
 (pdf-loader-install)
 
+;; Helper function for disabling line numbers in some modes
+(defun my-turn-off-line-numbers ()
+  "Disable line numbering in the current buffer."
+  (display-line-numbers-mode -1))
+
+;; Adding hooks for modes where I dont want to have line numbers
+(add-hook 'doc-view-mode #'my-turn-off-line-numbers)
+(add-hook 'eshell-mode-hook #'my-turn-off-line-numbers)
+(add-hook 'term-mode-hook #'my-turn-off-line-numbers)
+(add-hook 'undo-tree-mode-hook #'my-turn-off-line-numbers)
+
+;; Undo tree settings - global mode and dont spam my fs 
 (require 'undo-tree)
 (global-undo-tree-mode)
-
 (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
