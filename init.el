@@ -9,7 +9,7 @@
  ;; Font settings for Debian/Linux
  ((eq system-type 'gnu/linux)
   (custom-set-faces
-   '(default ((t (:family "Iosevka Nerd Font Mono" :foundry "outline" :slant normal :weight regular :height 140 :width normal))))
+   '(default ((t (:family "Iosevka Nerd Font Mono" :foundry "outline" :slant normal :weight regular :height 150 :width normal))))
    '(fixed-pitch ((t nil)))
    '(markdown-language-keyword-face ((t (:family "Iosevka Nerd Font Mono"))))
    '(markdown-pre-face ((t (:family "Iosevka Nerd Font Mono")))))))
