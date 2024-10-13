@@ -1,19 +1,19 @@
 (cond
- ;; Für Windows
+ ;; Font settings for Windows
  ((eq system-type 'windows-nt)
   (custom-set-faces
    '(default ((t (:family "Iosevka NFM" :foundry "outline" :slant normal :weight regular :height 120 :width normal))))
    '(fixed-pitch ((t nil)))
    '(markdown-language-keyword-face ((t (:family "Iosevka NFM"))))
    '(markdown-pre-face ((t (:family "Iosevka NFM"))))))
-
- ;; Für Debian/Linux
+ ;; Font settings for Debian/Linux
  ((eq system-type 'gnu/linux)
   (custom-set-faces
    '(default ((t (:family "Iosevka Nerd Font Mono" :foundry "outline" :slant normal :weight regular :height 140 :width normal))))
    '(fixed-pitch ((t nil)))
    '(markdown-language-keyword-face ((t (:family "Iosevka Nerd Font Mono"))))
    '(markdown-pre-face ((t (:family "Iosevka Nerd Font Mono")))))))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -123,3 +123,5 @@
 
 (require 'undo-tree)
 (global-undo-tree-mode)
+
+(setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
