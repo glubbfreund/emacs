@@ -50,8 +50,6 @@
 ;; custom command to open term with zsh without asking (and eshell on windows)
 (defun ter ()
   (interactive)
-  (split-window-horizontally)
-  (other-window 1)
   (if (eq system-type 'gnu/linux)(term "/usr/bin/zsh"))
   (if (eq system-type 'windows-nt)(eshell)))
 
