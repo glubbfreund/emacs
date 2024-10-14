@@ -128,6 +128,7 @@
 (add-hook 'doc-view-mode #'my-turn-off-line-numbers)
 (add-hook 'eshell-mode-hook #'my-turn-off-line-numbers)
 (add-hook 'term-mode-hook #'my-turn-off-line-numbers)
+(add-hook 'undo-tree-visualizer-mode-hook #'my-turn-off-line-numbers)
 
 ;; Undo tree settings - global mode and dont spam my fs 
 (require 'undo-tree)
