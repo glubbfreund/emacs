@@ -106,7 +106,7 @@
 ;; set eglot events buffer to 0 to prevent performance issues
 (setq eglot-events-buffer-size 0)
 
-;; Gives me git changes in the status line with color highlighting
+;; Gives me git changes in the status line with theme-dependent highlighting and hides zero changes
 (defadvice vc-git-mode-line-string (after plus-minus (file) compile activate)
   (setq ad-return-value
     (concat ad-return-value
@@ -114,11 +114,20 @@
                                file "diff" "--numstat" "--")))
               (and plus-minus
                    (string-match "^\\([0-9]+\\)\t\\([0-9]+\\)\t" plus-minus)
-                   (concat ":"
-                           (propertize (format "+%s" (match-string 1 plus-minus))
-                                       'face '(:foreground "green"))
-                           (propertize (format "-%s" (match-string 2 plus-minus))
-                                       'face '(:foreground "red"))))))))
+                   (let ((added (match-string 1 plus-minus))
+                         (removed (match-string 2 plus-minus))
+                         (result ":"))
+                     ;; Nur anzeigen, wenn hinzugefügt wurde
+                     (when (not (string= added "0"))
+                       (setq result (concat result
+                                            (propertize (format "+%s" added)
+                                                        'face 'diff-added))))
+                     ;; Nur anzeigen, wenn entfernt wurde
+                     (when (not (string= removed "0"))
+                       (setq result (concat result 
+                                            (propertize (format "-%s" removed)
+                                                        'face 'diff-removed))))
+                     result))))))
 
 ;; Install pdf-loader for fast startup while beeing able to load pdfs
 (pdf-loader-install)
