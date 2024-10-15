@@ -1,3 +1,17 @@
+;; Add Melpa repository
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(package-initialize)
+(unless package-archive-contents (package-refresh-contents))
+
+;; Initialize use-package on non-Linux platforms
+(unless (package-installed-p 'use-package) (package-install 'use-package))
+
+;; Ensure package installed
+(require 'use-package)
+(setq use-package-always-ensure t)
+
 (cond
  ;; Font settings for Windows
  ((eq system-type 'windows-nt)
@@ -19,6 +33,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(require 'gruber-darker-theme)
  '(custom-enabled-themes '(gruber-darker))
  '(custom-safe-themes
    '("e13beeb34b932f309fb2c360a04a460821ca99fe58f69e65557d6c1b10ba18c7" default))
@@ -41,11 +56,6 @@
 	  initial-scratch-message nil
 	  auto-save-default nil
       ring-bell-function 'ignore)
-
-;; Add Melpa repository
-(require 'package)
-(add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
 ;; custom command to open term with zsh without asking (and eshell on windows)
 (defun ter ()
@@ -90,10 +100,6 @@
 (add-hook 'go-mode-hook 'eglot-ensure)
 (add-hook 'typescript-mode-hook 'eglot-ensure)
 
-;; Enable Evil
-(require 'evil)
-(evil-mode 0)
-
 ;; show battery state in status line and prevent startup message
 (defun display-startup-echo-area-message () (message ""))
 
@@ -130,6 +136,7 @@
                      result))))))
 
 ;; Install pdf-loader for fast startup while beeing able to load pdfs
+(require 'pdf-loader)
 (pdf-loader-install)
 
 ;; Helper function for disabling line numbers in some modes
