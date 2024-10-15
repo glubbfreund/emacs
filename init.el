@@ -37,7 +37,7 @@
 (menu-bar-mode -1)
 (setq make-backup-files nil
       use-dialog-box nil
-	  inhibit-startup-message 1
+	  inhibit-startup-message t
 	  initial-scratch-message nil
 	  auto-save-default nil
       ring-bell-function 'ignore)
@@ -106,7 +106,7 @@
 ;; set eglot events buffer to 0 to prevent performance issues
 (setq eglot-events-buffer-size 0)
 
-;; Gives me git changes in the status line
+;; Gives me git changes in the status line with color highlighting
 (defadvice vc-git-mode-line-string (after plus-minus (file) compile activate)
   (setq ad-return-value
     (concat ad-return-value
@@ -114,7 +114,11 @@
                                file "diff" "--numstat" "--")))
               (and plus-minus
                    (string-match "^\\([0-9]+\\)\t\\([0-9]+\\)\t" plus-minus)
-                   (format " +%s-%s" (match-string 1 plus-minus) (match-string 2 plus-minus)))))))
+                   (concat ":"
+                           (propertize (format "+%s" (match-string 1 plus-minus))
+                                       'face '(:foreground "green"))
+                           (propertize (format "-%s" (match-string 2 plus-minus))
+                                       'face '(:foreground "red"))))))))
 
 ;; Install pdf-loader for fast startup while beeing able to load pdfs
 (pdf-loader-install)
