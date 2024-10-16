@@ -1,17 +1,3 @@
-;; Add Melpa repository
-(require 'package)
-(add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-(package-initialize)
-(unless package-archive-contents (package-refresh-contents))
-
-;; Initialize use-package on non-Linux platforms
-(unless (package-installed-p 'use-package) (package-install 'use-package))
-
-;; Ensure package installed
-(require 'use-package)
-(setq use-package-always-ensure t)
-
 (cond
  ;; Font settings for Windows
  ((eq system-type 'windows-nt)
@@ -33,7 +19,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(require 'gruber-darker-theme)
  '(custom-enabled-themes '(gruber-darker))
  '(custom-safe-themes
    '("e13beeb34b932f309fb2c360a04a460821ca99fe58f69e65557d6c1b10ba18c7" default))
@@ -41,8 +26,30 @@
  '(display-line-numbers-type 'relative)
  '(global-display-line-numbers-mode t)
  '(package-selected-packages
-   '(undo-tree pdf-tools typescript-mode markdown-mode gruber-darker-theme magit go-mode gruber-darker))
+   '(undo-tree pdf-tools typescript-mode markdown-mode go-mode gruber-darker-theme magit))
+ '(require 'gruber-darker-theme)
  '(tool-bar-mode nil))
+
+;; Fixed encoding issues on some Windows systems
+(setq-default buffer-file-coding-system 'utf-8)
+(setq-default coding-system-for-read 'utf-8)
+(prefer-coding-system 'utf-8)
+
+;; don't show ANSI escape sequences in compile buffer
+(add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
+
+;; Add Melpa repository
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(package-initialize)
+
+; fetch the list of packages available 
+(unless package-archive-contents
+  (package-refresh-contents))
+
+; install the missing packages
+(package-install-selected-packages)
 
 ;; Ask for y/n instead of yes/no
 (fset 'yes-or-no-p 'y-or-n-p)  
@@ -136,7 +143,7 @@
                      result))))))
 
 ;; Install pdf-loader for fast startup while beeing able to load pdfs
-(require 'pdf-loader)
+(require 'pdf-tools)
 (pdf-loader-install)
 
 ;; Helper function for disabling line numbers in some modes
@@ -154,3 +161,12 @@
 (require 'undo-tree)
 (global-undo-tree-mode)
 (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Iosevka NFM" :foundry "outline" :slant normal :weight regular :height 120 :width normal))))
+ '(fixed-pitch ((t nil)))
+ '(markdown-language-keyword-face ((t (:family "Iosevka NFM"))))
+ '(markdown-pre-face ((t (:family "Iosevka NFM")))))
