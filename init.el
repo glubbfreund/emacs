@@ -46,12 +46,6 @@
   (kill-buffer (current-buffer)))
 (advice-add 'term-handle-exit :after 'my-term-handle-exit)
 
-;; Resizing the window to my needs
-(if (window-system)
-(setq default-frame-alist
-        (append '((width . 150) (height . 30) (top . 120) (left . 185))
-                default-frame-alist)))
-
 ;; SAVE what is entered into minibuffer prompts
 ;; use M-n for next and M-p for previous
 (setq history-length 25)
