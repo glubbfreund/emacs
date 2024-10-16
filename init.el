@@ -115,6 +115,9 @@
 ;; set eglot events buffer to 0 to prevent performance issues
 (setq eglot-events-buffer-size 0)
 
+;; enable org-modern
+(with-eval-after-load 'org (global-org-modern-mode))
+
 ;; Gives me git changes in the status line with theme-dependent highlighting and hides zero changes
 (defadvice vc-git-mode-line-string (after plus-minus (file) compile activate)
   (setq ad-return-value
