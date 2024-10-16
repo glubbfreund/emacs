@@ -2,10 +2,10 @@
  ;; Font settings for Windows
  ((eq system-type 'windows-nt)
   (custom-set-faces
-   '(default ((t (:family "Iosevka NFM" :foundry "outline" :slant normal :weight regular :height 120 :width normal))))
+   '(default ((t (:family "Iosevka" :foundry "outline" :slant normal :weight regular :height 120 :width normal))))
    '(fixed-pitch ((t nil)))
-   '(markdown-language-keyword-face ((t (:family "Iosevka NFM"))))
-   '(markdown-pre-face ((t (:family "Iosevka NFM"))))))
+   '(markdown-language-keyword-face ((t (:family "Iosevka"))))
+   '(markdown-pre-face ((t (:family "Iosevka"))))))
  ;; Font settings for Debian/Linux
  ((eq system-type 'gnu/linux)
   (custom-set-faces
@@ -19,14 +19,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(undo-tree pdf-tools typescript-mode markdown-mode go-mode gruber-darker-theme magit))
  '(custom-enabled-themes '(gruber-darker))
  '(custom-safe-themes
    '("e13beeb34b932f309fb2c360a04a460821ca99fe58f69e65557d6c1b10ba18c7" default))
  '(display-battery-mode t)
  '(display-line-numbers-type 'relative)
  '(global-display-line-numbers-mode t)
+ '(package-selected-packages
+   '(org-remark org-modern undo-tree pdf-tools typescript-mode markdown-mode go-mode gruber-darker-theme magit))
  '(tool-bar-mode nil))
 
 ;; Fixed encoding issues on some Windows systems
@@ -62,12 +62,6 @@
 	  initial-scratch-message nil
 	  auto-save-default nil
       ring-bell-function 'ignore)
-
-;; custom command to open term with zsh without asking (and eshell on windows)
-(defun ter ()
-  (interactive)
-  (if (eq system-type 'gnu/linux)(term "/usr/bin/zsh"))
-  (if (eq system-type 'windows-nt)(eshell)))
 
 ;; automatically kill term buffer if process exits
 (defun my-term-handle-exit (&optional process-name msg)
@@ -174,3 +168,12 @@
 (require 'undo-tree)
 (global-undo-tree-mode)
 (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Iosevka NFM" :foundry "outline" :slant normal :weight regular :height 120 :width normal))))
+ '(fixed-pitch ((t nil)))
+ '(markdown-language-keyword-face ((t (:family "Iosevka NFM"))))
+ '(markdown-pre-face ((t (:family "Iosevka NFM")))))
