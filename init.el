@@ -26,7 +26,7 @@
  '(display-line-numbers-type 'relative)
  '(global-display-line-numbers-mode t)
  '(package-selected-packages
-   '(org-remark org-modern undo-tree pdf-tools typescript-mode markdown-mode go-mode gruber-darker-theme magit))
+   '(nov org-remark org-modern undo-tree pdf-tools typescript-mode markdown-mode go-mode gruber-darker-theme magit))
  '(tool-bar-mode nil))
 
 ;; Fixed encoding issues on some Windows systems
@@ -39,9 +39,12 @@
 
 ;; Add Melpa repository
 (require 'package)
-(add-to-list 'package-archives
-             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
+
+;; List of visible packages from melpa-unstable
+(defvar melpa-include-packages '(kv))
 
 ; fetch the list of packages available 
 (unless package-archive-contents
@@ -112,6 +115,13 @@
 ;; enable org-modern
 (with-eval-after-load 'org (global-org-modern-mode))
 
+;; enable nov.el for epub format
+(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+
+;; use msys64 for unzip in windows
+(if (eq system-type 'windows-nt)
+    (setq nov-unzip-program (executable-find "C:/msys64/usr/bin/unzip")))
+
 ;; Gives me git changes in the status line with theme-dependent highlighting and hides zero changes
 (defadvice vc-git-mode-line-string (after plus-minus (file) compile activate)
   (setq ad-return-value
@@ -173,7 +183,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Iosevka NFM" :foundry "outline" :slant normal :weight regular :height 120 :width normal))))
+ '(default ((t (:family "Iosevka" :foundry "outline" :slant normal :weight regular :height 120 :width normal))))
  '(fixed-pitch ((t nil)))
- '(markdown-language-keyword-face ((t (:family "Iosevka NFM"))))
- '(markdown-pre-face ((t (:family "Iosevka NFM")))))
+ '(markdown-language-keyword-face ((t (:family "Iosevka"))))
+ '(markdown-pre-face ((t (:family "Iosevka")))))
