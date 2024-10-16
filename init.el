@@ -71,8 +71,9 @@
 (add-hook 'go-mode-hook 'eglot-ensure)
 (add-hook 'typescript-mode-hook 'eglot-ensure)
 
-;; show battery state in status line and prevent startup message
+;; clean instruction messages
 (defun display-startup-echo-area-message () (message ""))
+(setq server-client-instructions nil)
 
 ;; show the big gdb layout 
 (setq gdb-many-windows 1)
