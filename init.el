@@ -1,18 +1,13 @@
-(cond
- ;; Font settings for Windows
- ((eq system-type 'windows-nt)
-  (custom-set-faces
-   '(default ((t (:family "Iosevka" :foundry "outline" :slant normal :weight regular :height 120 :width normal))))
-   '(fixed-pitch ((t nil)))
-   '(markdown-language-keyword-face ((t (:family "Iosevka"))))
-   '(markdown-pre-face ((t (:family "Iosevka"))))))
- ;; Font settings for Debian/Linux
- ((eq system-type 'gnu/linux)
-  (custom-set-faces
-   '(default ((t (:family "Iosevka Nerd Font Mono" :foundry "outline" :slant normal :weight regular :height 150 :width normal))))
-   '(fixed-pitch ((t nil)))
-   '(markdown-language-keyword-face ((t (:family "Iosevka Nerd Font Mono"))))
-   '(markdown-pre-face ((t (:family "Iosevka Nerd Font Mono")))))))
+;; Font settings 
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Iosevka" :foundry "outline" :slant normal :weight regular :height 120 :width normal))))
+ '(fixed-pitch ((t nil)))
+ '(markdown-language-keyword-face ((t (:family "Iosevka"))))
+ '(markdown-pre-face ((t (:family "Iosevka")))))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -178,12 +173,3 @@
 (require 'undo-tree)
 (global-undo-tree-mode)
 (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:family "Iosevka" :foundry "outline" :slant normal :weight regular :height 120 :width normal))))
- '(fixed-pitch ((t nil)))
- '(markdown-language-keyword-face ((t (:family "Iosevka"))))
- '(markdown-pre-face ((t (:family "Iosevka")))))
