@@ -144,14 +144,13 @@
 (magit-save-repository-buffers 'dontask)
 
 ;; Adding magit hook to refresh the vc state in statusbar
-(defun my-update-vc-state-in-all-editable-buffers ()
-  "Update VC state in all editable buffers after Magit actions."
+(defun my-update-vc-state ()
+  "Update VC state in all relevant buffers after Magit actions."
   (dolist (buf (buffer-list))
     (with-current-buffer buf
-      (when (and (buffer-file-name)  ;; check is buffer related to file
-                 (not (string-equal (buffer-name) "*magit*")))  ;; ignore magit buffer
+      (when (vc-backend (buffer-file-name))  ;; check if buffer is affectend of vc-control
         (vc-refresh-state)))))
-(add-hook 'magit-post-refresh-hook 'my-update-vc-state-in-all-editable-buffers)
+(add-hook 'magit-post-refresh-hook 'my-update-vc-state)
 
 ;; Install pdf-loader for fast startup while beeing able to load pdfs
 (require 'pdf-tools)
