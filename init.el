@@ -5,7 +5,7 @@
    '(default ((t (:family "Iosevka NFM" :foundry "outline" :slant normal :weight regular :height 120 :width normal))))
    '(fixed-pitch ((t nil)))
    '(markdown-language-keyword-face ((t (:family "Iosevka NFM"))))
-n   '(markdown-pre-face ((t (:family "Iosevka NFM"))))))
+   '(markdown-pre-face ((t (:family "Iosevka NFM"))))))
  ;; Font settings for Debian/Linux
  ((eq system-type 'gnu/linux)
   (custom-set-faces
