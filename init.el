@@ -142,6 +142,8 @@
 ;; Dont ask for saving magit, just do it
 (require 'magit)
 (magit-save-repository-buffers 'dontask)
+
+;; Adding magit hook to refresh the vc state in statusbar
 (add-hook 'magit-post-commit-hook 'vc-refresh-state)
 
 ;; Install pdf-loader for fast startup while beeing able to load pdfs
