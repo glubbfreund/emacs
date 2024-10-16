@@ -5,7 +5,7 @@
    '(default ((t (:family "Iosevka NFM" :foundry "outline" :slant normal :weight regular :height 120 :width normal))))
    '(fixed-pitch ((t nil)))
    '(markdown-language-keyword-face ((t (:family "Iosevka NFM"))))
-   '(markdown-pre-face ((t (:family "Iosevka NFM"))))))
+n   '(markdown-pre-face ((t (:family "Iosevka NFM"))))))
  ;; Font settings for Debian/Linux
  ((eq system-type 'gnu/linux)
   (custom-set-faces
@@ -19,15 +19,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(undo-tree pdf-tools typescript-mode markdown-mode go-mode gruber-darker-theme magit))
  '(custom-enabled-themes '(gruber-darker))
  '(custom-safe-themes
    '("e13beeb34b932f309fb2c360a04a460821ca99fe58f69e65557d6c1b10ba18c7" default))
  '(display-battery-mode t)
  '(display-line-numbers-type 'relative)
  '(global-display-line-numbers-mode t)
- '(package-selected-packages
-   '(undo-tree pdf-tools typescript-mode markdown-mode go-mode gruber-darker-theme magit))
- '(require 'gruber-darker-theme)
  '(tool-bar-mode nil))
 
 ;; Fixed encoding issues on some Windows systems
