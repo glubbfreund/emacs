@@ -113,9 +113,6 @@
 ;; show the big gdb layout 
 (setq gdb-many-windows 1)
 
-;; set the default coding system 
-(set-default-coding-systems 'utf-8)
-
 ;; set eglot events buffer to 0 to prevent performance issues
 (setq eglot-events-buffer-size 0)
 
@@ -141,6 +138,10 @@
                                             (propertize (format "-%s" removed)
                                                         'face 'diff-removed))))
                      result))))))
+
+;; Dont ask for saving magit, just do it
+(require 'magit)
+(magit-save-repository-buffers 'dontask)
 
 ;; Install pdf-loader for fast startup while beeing able to load pdfs
 (require 'pdf-tools)
