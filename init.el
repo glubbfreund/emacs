@@ -55,7 +55,8 @@
 
 ;; Enable Ido mode
 (setq ido-enable-flex-matching t)
-(ido-everywhere 1)
+(setq ido-use-filename-at-point 'guess)
+(setq ido-everywhere 1)
 (ido-mode 1)
 
 ;; Revert buffers when the underlying file has changed
