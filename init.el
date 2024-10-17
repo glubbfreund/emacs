@@ -127,11 +127,6 @@
         (vc-refresh-state)))))
 (add-hook 'magit-post-refresh-hook 'my-update-vc-state)
 
-; Interactive function to kill all other buffers
-(defun kill-all-other-buffers () 
-  (interactive)                                                                   
-    (mapc 'kill-buffer (cdr (buffer-list (current-buffer)))))
-
 ; Install pdf-loader for fast startup while beeing able to load pdfs
 (require 'pdf-tools)
 (pdf-loader-install)
