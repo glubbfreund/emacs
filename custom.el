@@ -20,5 +20,5 @@
  '(display-line-numbers-type 'relative)
  '(global-display-line-numbers-mode t)
  '(package-selected-packages
-   '(powershell eradio nov org-remark org-modern undo-tree pdf-tools typescript-mode markdown-mode go-mode gruber-darker-theme magit))
+   '(go-translate powershell eradio nov org-remark org-modern undo-tree pdf-tools typescript-mode markdown-mode go-mode gruber-darker-theme magit))
  '(tool-bar-mode nil))

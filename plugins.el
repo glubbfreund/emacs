@@ -16,3 +16,11 @@
 (require 'undo-tree)
 (global-undo-tree-mode)
 (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
+
+;; Settings for go-translate package
+(setq gt-langs '(de el))
+(setq gt-default-translator
+      (gt-translator
+       :taker   (gt-taker :text 'buffer :pick 'paragraph) 
+       :engines (gt-google-engine)                  
+       :render  (gt-buffer-render)))

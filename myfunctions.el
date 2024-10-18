@@ -4,6 +4,10 @@
   (kill-buffer (current-buffer)))
 (advice-add 'term-handle-exit :after 'my-term-handle-exit)
 
+;; Get rid of trailing whitespaces
+(add-hook 'before-save-hook
+          'delete-trailing-whitespace)
+
 ;; Helper function for disabling line numbers in some modes
 (defun my-turn-off-line-numbers ()
   "Disable line numbering in the current buffer."
