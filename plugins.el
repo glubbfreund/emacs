@@ -25,3 +25,8 @@
        :taker   (gt-taker :text 'buffer :pick 'paragraph)
        :engines (gt-google-engine)
        :render  (gt-buffer-render)))
+
+;; Everybody needs AI now
+(require 'gptel)
+(setq auth-sources '("~/.authinfo"))
+(setq gptel-api-key (gptel-api-key-from-auth-source))
