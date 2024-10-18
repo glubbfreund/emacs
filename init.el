@@ -164,4 +164,26 @@
     ("Bayern 3"
     . "http://streams.br.de/bayern3_2.m3u")
     ("Bayern 1"
-    . "http://streams.br.de/bayern1_2.m3u")))
+     . "http://streams.br.de/bayern1_2.m3u")))
+
+;; Get the name of the playing station, not the url
+(defun eradio-get-name-from-url (url)
+  "Find name in `eradio-channels`."
+  (let ((channel (cl-find-if (lambda (pair)
+                                (string= (cdr pair) url))
+                              eradio-channels)))
+    (if channel
+        (car channel) 
+      "Station unknown")))
+
+;; Show radio station in modeline if playing
+(defun eradio-update-modeline ()
+  (if eradio--process
+    (let ((station-name (eradio-get-name-from-url eradio-current-channel)))
+        (setq global-mode-string
+              (add-to-list 'global-mode-string (propertize (format "  ☊ %s" station-name) 'face 'mode-line-inactive) 'APPEND)))
+    (setq global-mode-string
+          (delete (propertize (format "  ☊ %s" (eradio-get-name-from-url eradio-current-channel)) 'face 'mode-line-inactive) global-mode-string))))
+
+;; Aktualisiere die Modeline alle paar Sekunden
+(run-with-timer 0 5 'eradio-update-modeline)
