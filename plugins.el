@@ -29,4 +29,4 @@
 ;; Everybody needs AI now
 (require 'gptel)
 (setq auth-sources '("~/.authinfo"))
-(setq gptel-api-key (gptel-api-key-from-auth-source))
+(setq gptel-api-key (auth-source-pick-first-password :host "api.openai.com"))
