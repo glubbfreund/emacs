@@ -1,4 +1,3 @@
-
 ;; Install and configure eradio
 (use-package eradio
   :ensure t)
@@ -33,9 +32,9 @@
   (if eradio--process
     (let ((station-name (eradio-get-name-from-url eradio-current-channel)))
         (setq global-mode-string
-              (add-to-list 'global-mode-string (propertize (format "  %s" station-name) 'face 'mode-line-inactive) 'APPEND)))
+              (add-to-list 'global-mode-string (propertize (format " %s" station-name) 'face 'warning) 'APPEND)))
     (setq global-mode-string
-          (delete (propertize (format "  %s" (eradio-get-name-from-url eradio-current-channel)) 'face 'mode-line-inactive) global-mode-string))))
+          (delete (propertize (format " %s" (eradio-get-name-from-url eradio-current-channel)) 'face 'warning) global-mode-string))))
 
 ;; Aktualisiere die Modeline alle paar Sekunden
 (run-with-timer 0 5 'eradio-update-modeline)
