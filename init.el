@@ -156,15 +156,17 @@
 (setq eradio-player '("mpv" "--no-video" "--no-terminal"))
 (setq eradio-channels
     '(("Παλμός Κεφαλλονιάς 98.3"
-    . "http://ice.streamcloud.mediacdn.com/palmos983")
-    ("Sfera 102.2"
-    . "http://sfera.live24.gr/sfera4132")
-    ("Ράδιο Θεσσαλονίκη 94.5"
-    . "http://eu7.fastcast4u.com:6156/stream?type=http&nocache=136596")
-    ("Bayern 3"
-    . "http://streams.br.de/bayern3_2.m3u")
-    ("Bayern 1"
-     . "http://streams.br.de/bayern1_2.m3u")))
+       . "http://ice.streamcloud.mediacdn.com/palmos983")
+      ("Radio Ellinadiko"
+       . "https://radio.streamings.gr/proxy/radioellinadiko?mp=/stream")
+      ("Sfera 102.2"
+       . "http://sfera.live24.gr/sfera4132")
+      ("Ράδιο Θεσσαλονίκη 94.5"
+       . "http://eu7.fastcast4u.com:6156/stream?type=http&nocache=136596")
+      ("Bayern 3"
+       . "http://streams.br.de/bayern3_2.m3u")
+      ("Bayern 1"
+       . "http://streams.br.de/bayern1_2.m3u")))
 
 ;; Get the name of the playing station, not the url
 (defun eradio-get-name-from-url (url)
