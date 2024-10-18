@@ -11,7 +11,7 @@
 ;; List of visible packages from melpa-unstable
 (defvar melpa-include-packages '(kv))
 
-;; fetch the list of packages available 
+;; fetch the list of packages available
 (unless package-archive-contents
   (package-refresh-contents))
 
@@ -39,9 +39,9 @@
       ido-use-filename-at-point 'guess
       ido-everywhere 1)
 
-;; Set tab-width 
+;; Set tab-width
 (setq-default tab-width 4)
-    
+
 ;; Ask for y/n instead of yes/no
 (setopt use-short-answers t)
 
@@ -64,7 +64,7 @@
 (add-hook 'python-mode-hook 'eglot-ensure)
 (add-hook 'go-mode-hook 'eglot-ensure)
 (add-hook 'typescript-mode-hook 'eglot-ensure)
-    
+
 ;; My custom functions (advices, hooks, etc)
 (load "~/.emacs.d/myfunctions.el")
 ;; Small Plugin configurations that doesnt need separate el file

@@ -13,9 +13,9 @@
        . "https://radio.streamings.gr/proxy/radioellinadiko?mp=/stream")
       ("Sfera"
        . "http://sfera.live24.gr/sfera4132")
-      ("Bayern 3"
+      ("Bayern3"
        . "http://streams.br.de/bayern3_2.m3u")
-      ("Bayern 1"
+      ("Bayern1"
        . "http://streams.br.de/bayern1_2.m3u")))
 
 ;; Get the name of the playing station, not the url
@@ -25,7 +25,7 @@
                                 (string= (cdr pair) url))
                               eradio-channels)))
     (if channel
-        (car channel) 
+        (car channel)
       "Station unknown")))
 
 ;; Show radio station in modeline if playing
@@ -33,9 +33,9 @@
   (if eradio--process
     (let ((station-name (eradio-get-name-from-url eradio-current-channel)))
         (setq global-mode-string
-              (add-to-list 'global-mode-string (propertize (format "  ☊ %s" station-name) 'face 'mode-line-inactive) 'APPEND)))
+              (add-to-list 'global-mode-string (propertize (format "  %s" station-name) 'face 'mode-line-inactive) 'APPEND)))
     (setq global-mode-string
-          (delete (propertize (format "  ☊ %s" (eradio-get-name-from-url eradio-current-channel)) 'face 'mode-line-inactive) global-mode-string))))
+          (delete (propertize (format "  %s" (eradio-get-name-from-url eradio-current-channel)) 'face 'mode-line-inactive) global-mode-string))))
 
 ;; Aktualisiere die Modeline alle paar Sekunden
 (run-with-timer 0 5 'eradio-update-modeline)
