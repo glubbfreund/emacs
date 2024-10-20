@@ -1,5 +1,6 @@
 ;; enable org-modern
 (with-eval-after-load 'org (global-org-modern-mode))
+(setq org-hide-emphasis-markers t)
 
 ;; enable nov.el for epub format
 (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
