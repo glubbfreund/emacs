@@ -8,6 +8,25 @@
 (add-hook 'before-save-hook
           'delete-trailing-whitespace)
 
+;; Spell checking
+(defun flyspell-german ()
+  (interactive)
+  (flyspell-mode t)
+  (ispell-change-dictionary "de")
+  (flyspell-buffer))
+
+(defun flyspell-greek ()
+  (interactive)
+  (flyspell-mode t)
+  (ispell-change-dictionary "el")
+  (flyspell-buffer))
+
+(defun flyspell-en ()
+  (interactive)
+  (flyspell-mode t)
+  (ispell-change-dictionary "en")
+  (flyspell-buffer))
+
 ;; Helper function for disabling line numbers in some modes
 (defun my-turn-off-line-numbers ()
   "Disable line numbering in the current buffer."

@@ -60,6 +60,9 @@
 ;; set eglot events buffer to 0 to prevent performance issues
 (setq eglot-events-buffer-size 0)
 
+;; aspell is more modern
+(setq ispell-program-name "aspell")
+
 ;; Autorun eglot
 (add-hook 'python-mode-hook 'eglot-ensure)
 (add-hook 'go-mode-hook 'eglot-ensure)
