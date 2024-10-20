@@ -68,9 +68,6 @@
 (add-hook 'go-mode-hook 'eglot-ensure)
 (add-hook 'typescript-mode-hook 'eglot-ensure)
 
-;; Keyboard mappings
-(global-set-key [f9] 'toggle-input-method)
-
 ;; My custom functions (advices, hooks, etc)
 (load "~/.emacs.d/myfunctions.el")
 ;; Small Plugin configurations that doesnt need separate el file
