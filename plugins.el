@@ -19,7 +19,7 @@
 
 ;; Settings for go-translate package
 (require 'go-translate)
-(setq gt-langs '(de el))
+(setq gt-langs '(de el en))
 (setq gt-default-translator
       (gt-translator
        :taker   (gt-taker :text 'buffer :pick 'paragraph)
