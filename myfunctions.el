@@ -8,7 +8,7 @@
 (add-hook 'before-save-hook
           'delete-trailing-whitespace)
 
-;; Spell checking
+;; Spell checking functions
 (defun flyspell-german ()
   (interactive)
   (flyspell-mode t)
@@ -21,7 +21,7 @@
   (ispell-change-dictionary "el")
   (flyspell-buffer))
 
-(defun flyspell-en ()
+(defun flyspell-english ()
   (interactive)
   (flyspell-mode t)
   (ispell-change-dictionary "en")
