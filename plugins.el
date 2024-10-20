@@ -26,7 +26,7 @@
                   :engines (gt-google-engine)
                   :render (gt-buffer-render)))
         (de-en . ,(gt-translator
-                  :taker (gt-taker :langs '(en de) :text 'buffer :pick 'paragraph)
+                   :taker (gt-taker :langs '(en de) :text 'buffer :pick 'paragraph)
                   :engines (gt-google-engine)
                   :render (gt-buffer-render)))))
 
