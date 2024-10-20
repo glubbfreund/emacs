@@ -19,12 +19,15 @@
 
 ;; Settings for go-translate package
 (require 'go-translate)
-(setq gt-langs '(de el en))
-(setq gt-default-translator
-      (gt-translator
-       :taker   (gt-taker :text 'buffer :pick 'paragraph)
-       :engines (gt-google-engine)
-       :render  (gt-buffer-render)))
+(setq gt-preset-translators
+      `((de-el . ,(gt-translator
+                   :taker (gt-taker :langs '(el de) :text 'buffer :pick 'paragraph)
+                  :engines (gt-google-engine)
+                  :render (gt-buffer-render)))
+        (de-en . ,(gt-translator
+                  :taker (gt-taker :langs '(en de) :text 'buffer :pick 'paragraph)
+                  :engines (gt-google-engine)
+                  :render (gt-buffer-render)))))
 
 ;; Everybody needs AI now
 (require 'gptel)
