@@ -18,18 +18,19 @@
           'delete-trailing-whitespace)
 
 ;; Spell checking functions
+(global-set-key (kbd "C-c s d") 'flyspell-german)
 (defun flyspell-german ()
   (interactive)
   (flyspell-mode t)
   (ispell-change-dictionary "de")
   (flyspell-buffer))
-
+(global-set-key (kbd "C-c s e") 'flyspell-greek)
 (defun flyspell-greek ()
   (interactive)
   (flyspell-mode t)
   (ispell-change-dictionary "el")
   (flyspell-buffer))
-
+(global-set-key (kbd "C-c s i") 'flyspell-english)
 (defun flyspell-english ()
   (interactive)
   (flyspell-mode t)

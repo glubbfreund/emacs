@@ -19,6 +19,7 @@
 (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
 
 ;; Settings for go-translate package
+(global-set-key (kbd "C-c t") 'gt-do-translate)
 (require 'go-translate)
 (setq gt-preset-translators
       `((de-el . ,(gt-translator
@@ -31,6 +32,8 @@
                   :render (gt-buffer-render)))))
 
 ;; Everybody needs AI now
+(global-set-key (kbd "C-c k o") 'gptel)
+(global-set-key (kbd "C-c k a") 'gptel-send)
 (require 'gptel)
 (setq auth-sources '("~/.authinfo"))
 (setq gptel-api-key (auth-source-pick-first-password :host "api.openai.com"))
