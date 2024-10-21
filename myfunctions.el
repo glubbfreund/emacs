@@ -48,3 +48,4 @@
 (add-hook 'term-mode-hook #'my-turn-off-line-numbers)
 (add-hook 'undo-tree-visualizer-mode-hook #'my-turn-off-line-numbers)
 (add-hook 'xref-buffer-mode-hook #'my-turn-off-line-numbers)
+(add-hook 'image-mode-hook #'my-turn-off-line-numbers)
