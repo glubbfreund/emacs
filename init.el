@@ -35,6 +35,7 @@
 (savehist-mode 1)
 (setq gdb-many-windows 1
       history-length 25
+      ispell-programm-name "aspell"
       ido-enable-flex-matching t
       ido-use-filename-at-point 'guess
       ido-everywhere 1)
@@ -60,8 +61,8 @@
 ;; set eglot events buffer to 0 to prevent performance issues
 (setq eglot-events-buffer-size 0)
 
-;; aspell is more modern
-(setq ispell-program-name "aspell")
+;; keybindings
+(global-set-key [f9] 'toggle-input-method)
 
 ;; Autorun eglot
 (add-hook 'python-mode-hook 'eglot-ensure)

@@ -4,6 +4,15 @@
   (kill-buffer (current-buffer)))
 (advice-add 'term-handle-exit :after 'my-term-handle-exit)
 
+(defun my-highlight-input-method-in-modeline ()
+  "Highlight the input method indicator in the mode line if an input method is active."
+  (setq mode-line-mule-info
+        '(:eval (if current-input-method
+                    (propertize (concat "⚑" current-input-method-title "  ")
+                                'face 'warning)
+                  "⚐DE "))))
+(add-hook 'post-command-hook #'my-highlight-input-method-in-modeline)
+
 ;; Get rid of trailing whitespaces
 (add-hook 'before-save-hook
           'delete-trailing-whitespace)
