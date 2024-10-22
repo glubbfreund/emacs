@@ -33,6 +33,7 @@
 (save-place-mode 1)
 (ido-mode 1)
 (savehist-mode 1)
+(setq pr-temp-dir "~/AppData/Local/Temp")
 (setq gdb-many-windows 1
       history-length 25
       ispell-programm-name "aspell"
@@ -62,7 +63,7 @@
 (setq eglot-events-buffer-size 0)
 
 ;; keybindings
-(global-set-key [f9] 'toggle-input-method)
+(global-set-key [f9] 'toggle-input-language)
 
 ;; Autorun eglot
 (add-hook 'python-mode-hook 'eglot-ensure)
@@ -77,3 +78,5 @@
 (load "~/.emacs.d/magit.el")
 ;; Eradio client modifications
 (load "~/.emacs.d/eradio.el")
+;; Import my org-mode settings
+(load "~/.emacs.d/org.el")

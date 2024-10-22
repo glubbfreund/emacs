@@ -4,14 +4,15 @@
   (kill-buffer (current-buffer)))
 (advice-add 'term-handle-exit :after 'my-term-handle-exit)
 
+;; add custom modeline for input method
 (defun my-highlight-input-method-in-modeline ()
   "Highlight the input method indicator in the mode line if an input method is active."
   (setq mode-line-mule-info
-        '(:eval (if current-input-method
-                    (propertize (concat "⚑" current-input-method-title "  ")
+        '(:eval (if (string= current-input-method "greek")
+                    (propertize (concat "⚑" current-input-method-title "   ")
                                 'face 'warning)
-                  "⚐DE "))))
-(add-hook 'post-command-hook #'my-highlight-input-method-in-modeline)
+                  (concat "⚐" current-input-method-title " ")))))
+  (add-hook 'post-command-hook #'my-highlight-input-method-in-modeline)
 
 ;; Get rid of trailing whitespaces
 (add-hook 'before-save-hook
@@ -36,6 +37,20 @@
   (flyspell-mode t)
   (ispell-change-dictionary "en")
   (flyspell-buffer))
+
+;; Switch between german and greek input method
+(defun toggle-input-language ()
+  "Should toggle between german and greek input method."
+  (interactive)
+  (if (string= current-input-method "german-postfix")
+	  (set-input-method "greek")
+    (set-input-method "german-postfix")))
+
+;; New buffer, set me to german-postfix
+(defun my-set-german-input ()
+  "Used as hook to set german as def language in buffer."
+  (set-input-method "german-postfix"))
+(add-hook 'after-change-major-mode-hook #'my-set-german-input)
 
 ;; Helper function for disabling line numbers in some modes
 (defun my-turn-off-line-numbers ()
