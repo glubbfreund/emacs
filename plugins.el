@@ -14,20 +14,10 @@
 (global-undo-tree-mode)
 (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
 
-;; Settings for go-translate package
-(global-set-key (kbd "C-c t") 'gt-do-translate)
-(require 'go-translate)
-(setq gt-preset-translators
-      `((de-el . ,(gt-translator
-                   :taker (gt-taker :langs '(el de) :text 'buffer :pick 'paragraph)
-                  :engines (gt-google-engine)
-                  :render (gt-buffer-render)))
-        (de-en . ,(gt-translator
-                   :taker (gt-taker :langs '(en de) :text 'buffer :pick 'paragraph)
-                  :engines (gt-google-engine)
-                  :render (gt-buffer-render)))))
+;; Evil mode
 
-;; Everybody needs AI now
+
+;; EVERYBODYu needs AI now
 (global-set-key (kbd "C-c k o") 'gptel)
 (global-set-key (kbd "C-c k a") 'gptel-send)
 (require 'gptel)
