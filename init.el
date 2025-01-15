@@ -20,6 +20,7 @@
 
 ;; remove not used features
 (scroll-bar-mode -1)
+(put 'dired-find-alternate-file 'disabled nil)
 (menu-bar-mode -1)
 (setq make-backup-files nil
       use-dialog-box nil
@@ -33,6 +34,7 @@
 (save-place-mode 1)
 (ido-mode 1)
 (savehist-mode 1)
+(ffap-bindings)
 (setq pr-temp-dir "~/AppData/Local/Temp")
 (setq gdb-many-windows 1
       history-length 25
@@ -59,8 +61,9 @@
 ;; don't show ANSI escape sequences in compile buffer (Windows issue)
 (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
 
-;; set eglot events buffer to 0 to prevent performance issues
-(setq eglot-events-buffer-size 0)
+;; Prevent spamming but keep buffer high to analyze later
+(setq eglot-events-buffer-size 1000)
+(setq eglot-report-progress nil)
 
 ;; keybindings
 (global-set-key [f9] 'toggle-input-language)
@@ -69,7 +72,12 @@
 (add-hook 'python-mode-hook 'eglot-ensure)
 (add-hook 'go-mode-hook 'eglot-ensure)
 (add-hook 'typescript-mode-hook 'eglot-ensure)
+(add-hook 'java-mode-hook 'eglot-java-mode)
+(add-hook 'c-mode-hook 'eglot-ensure)
+(add-hook 'c++-mode-hook 'eglot-ensure)
 
+;; Evil Mode
+(load "~/.emacs.d/evil.el")
 ;; My custom functions (advices, hooks, etc)
 (load "~/.emacs.d/myfunctions.el")
 ;; Small Plugin configurations that doesnt need separate el file
