@@ -2,14 +2,9 @@
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (load custom-file)
 
-;; Add Melpa repository
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; add Melpa stable
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-(package-initialize)
-
-;; List of visible packages from melpa-unstable
-(defvar melpa-include-packages '(kv))
+(add-to-list 'package-archives '("jcs-elpa" . "https://jcs-emacs.github.io/jcs-elpa/packages/") t)
 
 ;; fetch the list of packages available
 (unless package-archive-contents
@@ -23,7 +18,7 @@
 (put 'dired-find-alternate-file 'disabled nil)
 (menu-bar-mode -1)
 (setq make-backup-files nil
-      use-dialog-box nil
+          use-dialog-box nil
 	  inhibit-startup-message t
 	  initial-scratch-message nil
 	  auto-save-default nil
@@ -35,17 +30,18 @@
 (ido-mode 1)
 (savehist-mode 1)
 (ffap-bindings)
-(setq pr-temp-dir "~/AppData/Local/Temp")
+(setq pr-temp-dir "~/AppData/Local/Temp"
+      find-program "\"C:\\Program Files\\Git\\usr\\bin\\find.exe\"")
 (setq gdb-many-windows 1
-      history-length 25
-      ispell-programm-name "aspell"
-      ido-enable-flex-matching t
-      ido-use-filename-at-point 'guess
-      ido-everywhere 1)
+      history-length 25)
 
-;; Set tab-width
-(setq-default tab-width 4)
-(setq-default c-basic-offset 4)
+;; Enable Evil
+(setq evil-want-keybinding nil)
+(require 'evil)
+(evil-mode 1)
+(require 'evil-collection)
+(evil-collection-init)
+(define-key evil-insert-state-map "jj" 'evil-normal-state)
 
 ;; Ask for y/n instead of yes/no
 (setopt use-short-answers t)
@@ -54,39 +50,42 @@
 (defun display-startup-echo-area-message () (message ""))
 (setq server-client-instructions nil)
 
-;; Fixed encoding issues on some Windows systems
-(setq-default buffer-file-coding-system 'utf-8)
-(setq-default coding-system-for-read 'utf-8)
-(prefer-coding-system 'utf-8)
-
 ;; don't show ANSI escape sequences in compile buffer (Windows issue)
 (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
 
-;; Prevent spamming but keep buffer high to analyze later
-(setq eglot-events-buffer-size 1000)
-(setq eglot-report-progress nil)
-(setq eldoc-echo-area-use-multiline-p nil)
-
-;; keybindings
-(global-set-key [f9] 'toggle-input-language)
-
 ;; Autorun eglot
 (add-hook 'python-mode-hook 'eglot-ensure)
-(add-hook 'go-mode-hook 'eglot-ensure)
-(add-hook 'typescript-mode-hook 'eglot-ensure)
-(add-hook 'java-mode-hook 'eglot-java-mode)
 (add-hook 'c-mode-hook 'eglot-ensure)
 (add-hook 'c++-mode-hook 'eglot-ensure)
 
-;; Evil Mode
-(load "~/.emacs.d/evil.el")
-;; My custom functions (advices, hooks, etc)
-(load "~/.emacs.d/myfunctions.el")
-;; Small Plugin configurations that doesnt need separate el file
-(load "~/.emacs.d/plugins.el")
-;; Config of margit git client
-(load "~/.emacs.d/magit.el")
-;; Eradio client modifications
-(load "~/.emacs.d/eradio.el")
-;; Import my org-mode settings
-(load "~/.emacs.d/org.el")
+;; Undo tree settings - global mode and dont spam my fs
+(require 'undo-tree)
+(global-undo-tree-mode)
+(setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
+
+;; Copilot settings
+(require 'copilot)
+(add-hook 'prog-mode-hook 'copilot-mode)
+(add-to-list 'copilot-indentation-alist '(prog-mode 4))
+(define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
+(define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
+
+;; automatically kill term buffer if process exits
+(defun my-term-handle-exit (&optional process-name msg)
+  (message "%s | %s" process-name msg)
+  (kill-buffer (current-buffer)))
+(advice-add 'term-handle-exit :after 'my-term-handle-exit)
+
+;; Get rid of trailing whitespaces
+(add-hook 'before-save-hook
+          'delete-trailing-whitespace)
+
+;; automatically kill term buffer if process exits
+(defun my-term-handle-exit (&optional process-name msg)
+  (message "%s | %s" process-name msg)
+  (kill-buffer (current-buffer)))
+(advice-add 'term-handle-exit :after 'my-term-handle-exit)
+
+;; Get rid of trailing whitespaces
+(add-hook 'before-save-hook
+          'delete-trailing-whitespace)
