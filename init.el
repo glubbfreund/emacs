@@ -35,6 +35,11 @@
 (setq gdb-many-windows 1
       history-length 25)
 
+;; display file numbers only in programming mode
+(defun my-display-numbers-hook ()
+  (display-line-numbers-mode 1))
+(add-hook 'prog-mode-hook 'my-display-numbers-hook)
+
 ;; set to use tabs and 4 spaces
 (setq indent-tabs-mode t
       tab-width 4)
@@ -46,6 +51,11 @@
 (require 'evil-collection)
 (evil-collection-init)
 (define-key evil-insert-state-map "jj" 'evil-normal-state)
+(evil-ex-define-cmd "wq" 'save-kill-and-delete-window)
+(evil-ex-define-cmd "q" 'kill-and-delete-window)
+(evil-ex-define-cmd "qq" 'delete-frame)
+(defun kill-and-delete-window()(interactive)(kill-current-buffer)(delete-window))
+(defun save-kill-and-delete-window()(interactive)(save-buffer)(kill-current-buffer)(delete-window))
 
 ;; Ask for y/n instead of yes/no
 (setopt use-short-answers t)
@@ -61,6 +71,7 @@
 (add-hook 'python-mode-hook 'eglot-ensure)
 (add-hook 'c-mode-hook 'eglot-ensure)
 (add-hook 'c++-mode-hook 'eglot-ensure)
+(add-hook 'java-mode-hook 'eglot-java-mode)
 (setq eglot-events-buffer-config '(:size 0 :format full))
 (setq eglot-events-buffer-size 0)
 
@@ -68,6 +79,10 @@
 (require 'undo-tree)
 (global-undo-tree-mode)
 (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
+
+;; enable nov.el for epub format
+(require 'nov)
+(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
 
 ;; Copilot settings
 (require 'copilot)

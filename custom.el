@@ -18,7 +18,8 @@
    '("01a9797244146bbae39b18ef37e6f2ca5bebded90d9fe3a2f342a9e863aaa4fd" default))
  '(display-battery-mode t)
  '(display-line-numbers-type 'relative)
- '(global-display-line-numbers-mode t)
+ '(global-display-line-numbers-mode nil)
  '(package-selected-packages
-   '(gptel copilot evil-collection evil markdown-mode undo-tree gruber-darker-theme))
- '(tool-bar-mode nil))
+   '(eglot-java gptel copilot evil-collection evil markdown-mode undo-tree gruber-darker-theme))
+ '(tool-bar-mode nil)
+ '(warning-suppress-types '((emacs))))
