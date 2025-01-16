@@ -57,6 +57,10 @@
   "Disable line numbering in the current buffer."
   (display-line-numbers-mode -1))
 
+;; Fix compile escape codes
+(add-hook 'compilation-filter-hook
+		  (lambda () (ansi-color-apply-on-region (point-min) (point-max))))
+
 ;; Adding hooks for modes where I dont want to have line numbers
 (add-hook 'doc-view-mode #'my-turn-off-line-numbers)
 (add-hook 'eshell-mode-hook #'my-turn-off-line-numbers)

@@ -20,9 +20,33 @@
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
 
-;; EVERYBODYu needs AI now
+;; Everybody needs AI now
 (global-set-key (kbd "C-c k o") 'gptel)
 (global-set-key (kbd "C-c k a") 'gptel-send)
 (require 'gptel)
 (setq auth-sources '("~/.authinfo"))
 (setq gptel-api-key (auth-source-pick-first-password :host "api.openai.com"))
+
+;; Copilot
+(require 'copilot)
+(define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
+(define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
+(add-hook 'prog-mode-hook 'copilot-mode)
+
+;; I want company mode to have better autocomplete
+;; (require 'company)
+;; (add-hook 'after-init-hook 'global-company-mode)
+
+;; Everybody needs AI now
+(global-set-key (kbd "C-c k o") 'gptel)
+(global-set-key (kbd "C-c k a") 'gptel-send)
+(require 'gptel)
+(setq auth-sources '("~/.authinfo"))
+(setq gptel-api-key (auth-source-pick-first-password :host "api.openai.com"))
+
+;; Copilot
+(require 'copilot)
+(define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
+(define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
+(add-hook 'prog-mode-hook 'copilot-mode)
+(add-to-list 'copilot-indentation-alist '(prog-mode 4))

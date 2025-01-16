@@ -6,7 +6,7 @@
 (global-set-key (kbd "C-c r t") 'eradio-toggle)
 (setq eradio-player '("mpv" "--no-video" "--no-terminal"))
 (setq eradio-channels
-    '(("Παλμός"
+    '(("Palmos"
        . "http://ice.streamcloud.mediacdn.com/palmos983")
       ("Ellinadiko"
        . "https://radio.streamings.gr/proxy/radioellinadiko?mp=/stream")

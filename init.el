@@ -45,6 +45,7 @@
 
 ;; Set tab-width
 (setq-default tab-width 4)
+(setq-default c-basic-offset 4)
 
 ;; Ask for y/n instead of yes/no
 (setopt use-short-answers t)
@@ -64,6 +65,7 @@
 ;; Prevent spamming but keep buffer high to analyze later
 (setq eglot-events-buffer-size 1000)
 (setq eglot-report-progress nil)
+(setq eldoc-echo-area-use-multiline-p nil)
 
 ;; keybindings
 (global-set-key [f9] 'toggle-input-language)
