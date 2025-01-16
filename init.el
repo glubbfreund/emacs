@@ -35,6 +35,10 @@
 (setq gdb-many-windows 1
       history-length 25)
 
+;; set to use tabs and 4 spaces
+(setq indent-tabs-mode t
+      tab-width 4)
+
 ;; Enable Evil
 (setq evil-want-keybinding nil)
 (require 'evil)
@@ -53,10 +57,12 @@
 ;; don't show ANSI escape sequences in compile buffer (Windows issue)
 (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
 
-;; Autorun eglot
+;; Eglot releated settings
 (add-hook 'python-mode-hook 'eglot-ensure)
 (add-hook 'c-mode-hook 'eglot-ensure)
 (add-hook 'c++-mode-hook 'eglot-ensure)
+(setq eglot-events-buffer-config '(:size 0 :format full))
+(setq eglot-events-buffer-size 0)
 
 ;; Undo tree settings - global mode and dont spam my fs
 (require 'undo-tree)
@@ -66,9 +72,25 @@
 ;; Copilot settings
 (require 'copilot)
 (add-hook 'prog-mode-hook 'copilot-mode)
-(add-to-list 'copilot-indentation-alist '(prog-mode 4))
+(add-to-list 'copilot-indentation-alist '(prog-mode 2))
 (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
 (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
+(define-key copilot-completion-map (kbd "C-<tab>") 'copilot-accept-completion-by-word)
+(define-key copilot-completion-map (kbd "C-TAB") 'copilot-accept-completion-by-word)
+(define-key copilot-completion-map (kbd "C-n") 'copilot-next-completion)
+(define-key copilot-completion-map (kbd "C-p") 'copilot-previous-completion)
+(add-to-list 'copilot-indentation-alist '(prog-mode 2))
+(add-to-list 'copilot-indentation-alist '(org-mode 2))
+(add-to-list 'copilot-indentation-alist '(text-mode 2))
+(add-to-list 'copilot-indentation-alist '(closure-mode 2))
+(add-to-list 'copilot-indentation-alist '(emacs-lisp-mode 2))
+
+;; For general ChatGPT usage
+(global-set-key (kbd "C-c k o") 'gptel)
+(global-set-key (kbd "C-c k a") 'gptel-send)
+(require 'gptel)
+(setq auth-sources '("~/.authinfo"))
+(setq gptel-api-key (auth-source-pick-first-password :host "api.openai.com"))
 
 ;; automatically kill term buffer if process exits
 (defun my-term-handle-exit (&optional process-name msg)
