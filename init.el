@@ -33,6 +33,7 @@
 (ido-everywhere 1)
 (savehist-mode 1)
 (ffap-bindings)
+(prefer-coding-system 'utf-8)
 (setq pr-temp-dir "~/AppData/Local/Temp"
       find-program "\"C:\\Program Files\\Git\\usr\\bin\\find.exe\""
 	  indent-tabs-mode t
