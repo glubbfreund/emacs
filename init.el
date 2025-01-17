@@ -38,8 +38,9 @@
       ido-enable-flex-matching t
       ido-use-filename-at-point 'guess
       ido-use-url-at-point nil
-      ido-ignore-buffers '("\\` " "^\*Completions\*" "^\*Messages\*" "^\*copilot events\*" "^\*EGLOT\*" "^\*Warnings\*" "^\*vc-git\*"
-						   "^\*vc\*" "^\*vc-diff\*" "^\*log-edit-files\*" "^\*changes to\*" "^\*undo-tree\*"))
+      ido-ignore-buffers '("\\` " "^\*Completions\*" "^\*Messages\*" "^\*copilot events\*"
+						   "^\*EGLOT\*" "^\*Warnings\*" "^\*vc-git\*" "^\*vc\*" "^\*vc-diff\*"
+						   "^\*log-edit-files\*" "^\*changes to\*" "^\*undo-tree\*"))
 (setq gdb-many-windows 1
       history-length 25)
 
