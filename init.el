@@ -45,9 +45,9 @@
       ido-enable-flex-matching t
       ido-use-filename-at-point 'guess
       ido-use-url-at-point nil
-      ido-ignore-buffers '("\\` " "^\*Completions\*" "^\*Messages\*" "^\*copilot events\*" "^\*Quail Completions\*"
+      ido-ignore-buffers '("\\` " "^\*Completions\*" "^\*Messages\*" "^\*copilot events\*" "^\*Quail Completions\*" "^.newsrc-dribble"
 						   "^\*EGLOT\*" "^\*Warnings\*" "^\*vc-git\*" "^\*vc\*" "^\*vc-diff\*"
-						   "^\*log-edit-files\*" "^\*changes to\*" "^\*undo-tree\*"))
+						   "^\*log-edit-files\*" "^\*changes to\*" "^\*undo-tree\*" "^\*nov unzip\*"))
 
 ;; clean instruction messages
 (defun display-startup-echo-area-message () (message ""))
