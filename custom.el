@@ -21,5 +21,4 @@
  '(global-display-line-numbers-mode nil)
  '(package-selected-packages
    '(eglot-java gptel copilot evil-collection evil markdown-mode undo-tree gruber-darker-theme))
- '(tool-bar-mode nil)
- '(warning-suppress-types '((emacs))))
+ '(tool-bar-mode nil))

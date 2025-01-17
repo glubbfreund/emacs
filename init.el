@@ -1,4 +1,4 @@
-;; Load custom file and let emacs spam there
+;; load custom file and let emacs spam there
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (load custom-file)
 
@@ -22,16 +22,23 @@
 	  inhibit-startup-message t
 	  initial-scratch-message nil
 	  auto-save-default nil
+	  vc-suppress-confirm t
+	  inhibit-startup-buffer-menu t
       ring-bell-function 'ignore)
 
 ;; activate some wanted features
 (global-auto-revert-mode 1)
 (save-place-mode 1)
 (ido-mode 1)
+(ido-everywhere 1)
 (savehist-mode 1)
 (ffap-bindings)
 (setq pr-temp-dir "~/AppData/Local/Temp"
-      find-program "\"C:\\Program Files\\Git\\usr\\bin\\find.exe\"")
+      find-program "\"C:\\Program Files\\Git\\usr\\bin\\find.exe\""
+      ido-enable-flex-matching t
+      ido-use-filename-at-point 'guess
+      ido-use-url-at-point nil
+      ido-ignore-buffers '("\\` " "^\*Completions\*" "^\*Messages\*" "^\*copilot events\*" "^\*EGLOT\*" "^\*Warnings\*"))
 (setq gdb-many-windows 1
       history-length 25)
 
@@ -50,12 +57,20 @@
 (evil-mode 1)
 (require 'evil-collection)
 (evil-collection-init)
-(define-key evil-insert-state-map "jj" 'evil-normal-state)
 (evil-ex-define-cmd "wq" 'save-kill-and-delete-window)
 (evil-ex-define-cmd "q" 'kill-and-delete-window)
 (evil-ex-define-cmd "qq" 'delete-frame)
-(defun kill-and-delete-window()(interactive)(kill-current-buffer)(delete-window))
-(defun save-kill-and-delete-window()(interactive)(save-buffer)(kill-current-buffer)(delete-window))
+(defun kill-and-delete-window()
+  (interactive)
+  (kill-current-buffer)
+  (when (> (length (window-list)) 1)
+   (delete-window)))
+(defun save-kill-and-delete-window()
+  (interactive)
+  (save-buffer)
+  (kill-current-buffer)
+  (when (> (length (window-list)) 1)
+   (delete-window)))
 
 ;; Ask for y/n instead of yes/no
 (setopt use-short-answers t)
@@ -63,6 +78,9 @@
 ;; clean instruction messages
 (defun display-startup-echo-area-message () (message ""))
 (setq server-client-instructions nil)
+
+;; dont bother me with bs
+(setq warning-minimum-level :error)
 
 ;; don't show ANSI escape sequences in compile buffer (Windows issue)
 (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
@@ -72,8 +90,6 @@
 (add-hook 'c-mode-hook 'eglot-ensure)
 (add-hook 'c++-mode-hook 'eglot-ensure)
 (add-hook 'java-mode-hook 'eglot-java-mode)
-(setq eglot-events-buffer-config '(:size 0 :format full))
-(setq eglot-events-buffer-size 0)
 
 ;; Undo tree settings - global mode and dont spam my fs
 (require 'undo-tree)
@@ -106,16 +122,6 @@
 (require 'gptel)
 (setq auth-sources '("~/.authinfo"))
 (setq gptel-api-key (auth-source-pick-first-password :host "api.openai.com"))
-
-;; automatically kill term buffer if process exits
-(defun my-term-handle-exit (&optional process-name msg)
-  (message "%s | %s" process-name msg)
-  (kill-buffer (current-buffer)))
-(advice-add 'term-handle-exit :after 'my-term-handle-exit)
-
-;; Get rid of trailing whitespaces
-(add-hook 'before-save-hook
-          'delete-trailing-whitespace)
 
 ;; automatically kill term buffer if process exits
 (defun my-term-handle-exit (&optional process-name msg)
