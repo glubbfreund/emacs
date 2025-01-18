@@ -41,8 +41,7 @@
 (savehist-mode 1)
 (ffap-bindings)
 (prefer-coding-system 'utf-8)
-(setq pr-temp-dir "~/AppData/Local/Temp"
-      indent-tabs-mode t
+(setq indent-tabs-mode t
       tab-width 4
       gdb-many-windows 1
       history-length 500
@@ -59,6 +58,9 @@
 ;; OS specific settings
 (when (eq system-type 'windows-nt)
   (setq find-program "\"C:\\Program Files\\Git\\usr\\bin\\find.exe\""))
+(if (eq system-type 'gnu/linux)
+    (setq pr-temp-dir "/tmp")
+  (setq pr-temp-dir "~/AppData/Local/Temp"))
 
 ;; clean instruction messages
 (defun display-startup-echo-area-message () (message ""))
@@ -87,6 +89,9 @@
 (add-hook 'c-mode-hook 'eglot-ensure)
 (add-hook 'c++-mode-hook 'eglot-ensure)
 (add-hook 'java-mode-hook 'eglot-java-mode)
+
+;; Evil mode
+(load "~/.emacs.d/evil.el")
 
 ;; Org and writing related settings
 (load "~/.emacs.d/org.el")
