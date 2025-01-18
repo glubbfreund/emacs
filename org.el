@@ -1,6 +1,5 @@
 ;; Enable greek input method
 (setq default-input-method "greek")
-(global-set-key (kbd "C-c t i") 'toggle-input-method)
 
 ;; Spell checking functions
 (global-set-key (kbd "C-c s d") 'flyspell-german)

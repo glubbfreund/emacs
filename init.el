@@ -4,8 +4,14 @@
 
 ;; adding the package archives
 (package-initialize)
-(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
-(add-to-list 'package-archives '("jcs-elpa" . "https://jcs-emacs.github.io/jcs-elpa/packages/") t)
+(setq package-archives
+      '(("GNU ELPA"     . "https://elpa.gnu.org/packages/")
+        ("MELPA Stable" . "https://stable.melpa.org/packages/")
+        ("MELPA"        . "https://melpa.org/packages/"))
+      package-archive-priorities
+      '(("MELPA Stable" . 10)
+        ("GNU ELPA"     . 5)
+        ("MELPA"        . 0)))
 
 ;; fetch the list of packages available
 (unless package-archive-contents
@@ -36,19 +42,23 @@
 (ffap-bindings)
 (prefer-coding-system 'utf-8)
 (setq pr-temp-dir "~/AppData/Local/Temp"
-      find-program "\"C:\\Program Files\\Git\\usr\\bin\\find.exe\""
-	  indent-tabs-mode t
-	  tab-width 4
-	  gdb-many-windows 1
-	  history-length 250
-	  warning-minimum-level :error
-	  use-short-answers t
+      indent-tabs-mode t
+      tab-width 4
+      gdb-many-windows 1
+      history-length 500
+      warning-minimum-level :error
+      use-short-answers t
       ido-enable-flex-matching t
       ido-use-filename-at-point 'guess
       ido-use-url-at-point nil
-      ido-ignore-buffers '("\\` " "^\*Completions\*" "^\*Messages\*" "^\*copilot events\*" "^\*Quail Completions\*" "^.newsrc-dribble"
-						   "^\*EGLOT\*" "^\*Warnings\*" "^\*vc-git\*" "^\*vc\*" "^\*vc-diff\*"
-						   "^\*log-edit-files\*" "^\*changes to\*" "^\*undo-tree\*" "^\*nov unzip\*"))
+      ido-ignore-buffers '("\\` " "^\*Completions\*" "^\*Messages\*" "^\*copilot events\*"
+			   "^\*Quail Completions\*" "^.newsrc-dribble" "^\*EGLOT\*" "^\*Warnings\*"
+			   "^\*vc-git\*" "^\*vc\*" "^\*vc-diff\*" "^\*log-edit-files\*"
+			   "^\*changes to\*" "^\*undo-tree\*" "^\*nov unzip\*"))
+
+;; OS specific settings
+(when (eq system-type 'windows-nt)
+  (setq find-program "\"C:\\Program Files\\Git\\usr\\bin\\find.exe\""))
 
 ;; clean instruction messages
 (defun display-startup-echo-area-message () (message ""))
