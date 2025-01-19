@@ -64,10 +64,6 @@
     (setq pr-temp-dir "~/AppData/Local/Temp")
   (setq pr-temp-dir "/tmp"))
 
-;; Configure authentication
-(setq auth-sources "~/.secrets/authinfo.gpg")
-(setq ange-ftp-netrc-filename auth-sources)
-
 ;; clean instruction messages
 (defun display-startup-echo-area-message () (message ""))
 (setq server-client-instructions nil)
