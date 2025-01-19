@@ -47,6 +47,7 @@
       history-length 500
       warning-minimum-level :error
       use-short-answers t
+      pr-temp-dir "/tmp"
       auth-sources "~/.authinfo"
       ange-ftp-netrc-filename auth-sources
       ido-enable-flex-matching t
@@ -56,13 +57,6 @@
 			   "^\*Quail Completions\*" "^.newsrc-dribble" "^\*EGLOT\*" "^\*Warnings\*"
 			   "^\*vc-git\*" "^\*vc\*" "^\*vc-diff\*" "^\*log-edit-files\*"
 			   "^\*changes to\*" "^\*undo-tree\*" "^\*nov unzip\*"))
-
-;; OS specific settings
-(when (eq system-type 'windows-nt)
-  (setq find-program "\"C:\\Program Files\\Git\\usr\\bin\\find.exe\""))
-(if (eq system-type 'windows-nt)
-    (setq pr-temp-dir "~/AppData/Local/Temp")
-  (setq pr-temp-dir "/tmp"))
 
 ;; clean instruction messages
 (defun display-startup-echo-area-message () (message ""))
@@ -96,3 +90,7 @@
 (load "~/.emacs.d/evil.el")
 (load "~/.emacs.d/org.el")
 (load "~/.emacs.d/plugins.el")
+
+;; Win specific settings
+(when (eq system-type 'windows-nt)
+    (load "~/.emacs.d/windows.el"))
