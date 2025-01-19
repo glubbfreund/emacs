@@ -47,6 +47,8 @@
       history-length 500
       warning-minimum-level :error
       use-short-answers t
+      auth-sources "~/.authinfo"
+      ange-ftp-netrc-filename auth-sources
       ido-enable-flex-matching t
       ido-use-filename-at-point 'guess
       ido-use-url-at-point nil
@@ -61,6 +63,10 @@
 (if (eq system-type 'windows-nt)
     (setq pr-temp-dir "~/AppData/Local/Temp")
   (setq pr-temp-dir "/tmp"))
+
+;; Configure authentication
+(setq auth-sources "~/.secrets/authinfo.gpg")
+(setq ange-ftp-netrc-filename auth-sources)
 
 ;; clean instruction messages
 (defun display-startup-echo-area-message () (message ""))
