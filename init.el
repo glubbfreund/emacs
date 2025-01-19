@@ -1,5 +1,5 @@
 ;; load custom file and let emacs spam there
-(setq custom-file (concat user-emacs-directory "custom.el"))
+(setq custom-file (concat user-emacs-directory "auto.el"))
 (load custom-file)
 
 ;; adding the package archives
