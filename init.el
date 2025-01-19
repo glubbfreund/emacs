@@ -58,9 +58,9 @@
 ;; OS specific settings
 (when (eq system-type 'windows-nt)
   (setq find-program "\"C:\\Program Files\\Git\\usr\\bin\\find.exe\""))
-(if (eq system-type 'gnu/linux)
-    (setq pr-temp-dir "/tmp")
-  (setq pr-temp-dir "~/AppData/Local/Temp"))
+(if (eq system-type 'windows-nt)
+    (setq pr-temp-dir "~/AppData/Local/Temp")
+  (setq pr-temp-dir "/tmp"))
 
 ;; clean instruction messages
 (defun display-startup-echo-area-message () (message ""))
