@@ -26,11 +26,11 @@
 (menu-bar-mode -1)
 (setq make-backup-files nil
       use-dialog-box nil
-	  inhibit-startup-message t
-	  initial-scratch-message nil
-	  auto-save-default nil
-	  vc-suppress-confirm t
-	  inhibit-startup-buffer-menu t
+      inhibit-startup-message t
+      initial-scratch-message nil
+      auto-save-default nil
+      vc-suppress-confirm t
+      inhibit-startup-buffer-menu t
       ring-bell-function 'ignore)
 
 ;; activate some wanted features
@@ -90,11 +90,7 @@
 (add-hook 'c++-mode-hook 'eglot-ensure)
 (add-hook 'java-mode-hook 'eglot-java-mode)
 
-;; Evil mode
+;; Evil mode, org/writing and plugins
 (load "~/.emacs.d/evil.el")
-
-;; Org and writing related settings
 (load "~/.emacs.d/org.el")
-
-;; Load plugins
 (load "~/.emacs.d/plugins.el")

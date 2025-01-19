@@ -20,5 +20,5 @@
  '(display-line-numbers-type 'relative)
  '(global-display-line-numbers-mode nil)
  '(package-selected-packages
-   '(org-modern eglot-java gptel copilot evil-collection evil markdown-mode undo-tree gruber-darker-theme))
+   '(mood-line org-modern eglot-java gptel copilot evil-collection evil markdown-mode undo-tree gruber-darker-theme))
  '(tool-bar-mode nil))

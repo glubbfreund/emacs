@@ -1,3 +1,7 @@
+;; Enable modded modeline
+(require 'mood-line)
+(mood-line-mode)
+
 ;; enable nov.el for epub format
 (require 'nov)
 (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
