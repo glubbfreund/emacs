@@ -28,7 +28,9 @@
       use-dialog-box nil
       inhibit-startup-message t
       initial-scratch-message nil
+      org-startup-truncated nil
       auto-save-default nil
+      server-client-instructions nil
       vc-suppress-confirm t
       inhibit-startup-buffer-menu t
       ring-bell-function 'ignore)
@@ -43,7 +45,7 @@
 (prefer-coding-system 'utf-8)
 (setq indent-tabs-mode t
       tab-width 4
-      gdb-many-windows 1
+      gdb-many-windos 1
       history-length 500
       warning-minimum-level :error
       use-short-answers t
@@ -57,11 +59,10 @@
       ido-ignore-buffers '("\\` " "^\*Completions\*" "^\*Messages\*" "^\*copilot events\*"
 			   "^\*Quail Completions\*" "^.newsrc-dribble" "^\*EGLOT\*" "^\*Warnings\*"
 			   "^\*vc-git\*" "^\*vc\*" "^\*vc-diff\*" "^\*log-edit-files\*"
-			   "^\*changes to\*" "^\*undo-tree\*" "^\*nov unzip\*"))
+			   "^\*changes to\*" "^\*undo-tree\*" "^\*nov unzip\*" "^\*Async-native-compile-log\*"))
 
 ;; clean instruction messages
 (defun display-startup-echo-area-message () (message ""))
-(setq server-client-instructions nil)
 
 ;; display file numbers only in programming mode
 (defun my-display-numbers-hook ()
