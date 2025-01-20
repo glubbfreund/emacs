@@ -53,6 +53,7 @@
       auth-sources "~/.authinfo"
       ange-ftp-netrc-filename auth-sources
       printer-name "HL3040CN"
+      delete-by-moving-to-trash t
       ido-enable-flex-matching t
       ido-use-filename-at-point 'guess
       ido-use-url-at-point nil
