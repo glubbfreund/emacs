@@ -1,6 +1,3 @@
-;; Enable greek input method
-(setq default-input-method "greek")
-
 ;; Spell checking functions
 (global-set-key (kbd "C-c s d") 'flyspell-german)
 (defun flyspell-german ()

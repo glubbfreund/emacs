@@ -86,3 +86,14 @@ for printing.")
       (if (y-or-n-p "File is modified. Save before printing? ")
 	  (save-buffer))))
 (w32-winprint-print-file-notepad file))))
+
+;; We override the print functions because they are not working on windows
+(defun print-buffer()
+  "Print the buffer (windows compatible)"
+  (interactive)
+  (w32-winprint-print-buffer-notepad))
+
+(defun print-region()
+  "Print the region (windows compatible)"
+  (interactive)
+  (w32-winprint-print-region-notepad))
