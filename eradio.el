@@ -32,9 +32,9 @@
   (if eradio--process
     (let ((station-name (eradio-get-name-from-url eradio-current-channel)))
         (setq global-mode-string
-              (add-to-list 'global-mode-string (format " ☊%s" station-name) 'APPEND)))
+              (add-to-list 'global-mode-string (format " [%s]" station-name) 'APPEND)))
     (setq global-mode-string
-          (delete (format " ☊%s" (eradio-get-name-from-url eradio-current-channel)) global-mode-string))))
+          (delete (format " [%s]" (eradio-get-name-from-url eradio-current-channel)) global-mode-string))))
 
 ;; Aktualisiere die Modeline alle paar Sekunden
 (run-with-timer 0 5 'eradio-update-modeline)
