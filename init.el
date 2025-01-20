@@ -91,6 +91,7 @@
 (load "~/.emacs.d/evil.el")
 (load "~/.emacs.d/org.el")
 (load "~/.emacs.d/plugins.el")
+(load "~/.emacs.d/eradio.el")
 
 ;; Win specific settings
 (when (eq system-type 'windows-nt)
