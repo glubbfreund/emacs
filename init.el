@@ -49,8 +49,6 @@
       history-length 500
       warning-minimum-level :error
       use-short-answers t
-      buffer-file-coding-system 'utf-8
-      coding-system-for-read 'utf-8
       pr-temp-dir "/tmp"
       auth-sources "~/.authinfo"
       ange-ftp-netrc-filename auth-sources
