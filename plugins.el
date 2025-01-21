@@ -2,9 +2,17 @@
 (require 'mood-line)
 (mood-line-mode)
 
+;; For the beginning I need whichkey
+(require 'which-key)
+(which-key-mode)
+
 ;; enable nov.el for epub format
 (require 'nov)
 (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+
+;; to use emacs as a pdf reader
+(require 'pdf-tools)
+(pdf-loader-install)
 
 ;; Undo tree settings - global mode and dont spam my fs
 (require 'undo-tree)

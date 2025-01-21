@@ -49,6 +49,8 @@
       history-length 500
       warning-minimum-level :error
       use-short-answers t
+      buffer-file-coding-system 'utf-8
+      coding-system-for-read 'utf-8
       pr-temp-dir "/tmp"
       auth-sources "~/.authinfo"
       ange-ftp-netrc-filename auth-sources
@@ -90,7 +92,7 @@
 (add-hook 'java-mode-hook 'eglot-java-mode)
 
 ;; Evil mode, org/writing and plugins
-(load "~/.emacs.d/evil.el")
+;; (load "~/.emacs.d/evil.el")
 (load "~/.emacs.d/org.el")
 (load "~/.emacs.d/plugins.el")
 (load "~/.emacs.d/eradio.el")
