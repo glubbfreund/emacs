@@ -6,10 +6,6 @@
 (require 'which-key)
 (which-key-mode)
 
-;; Enable devil mode for now
-(require 'devil)
-(devil-mode)
-
 ;; enable nov.el for epub format
 (require 'nov)
 (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
