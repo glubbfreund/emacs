@@ -48,6 +48,7 @@
         		       ("nnimap+gmail:archiviert/alt" . "alt")
         		       ("gwene.de.heise.developer" . "Heise Developer")
         		       ("gwene.de.heise.newsticker" . "Heise News")
+			       ("gwene.de.golem.open-source" . "Golem Open Source")
         		       ("gwene.de.tagesschau". "Tagesschau")))
 
 (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
