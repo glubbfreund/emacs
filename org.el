@@ -18,7 +18,7 @@
   (ispell-change-dictionary "en")
   (flyspell-buffer))
 
-;; org-mode settings
+;; Org-mode settings
 (setq org-hide-emphasis-markers t
 	  org-modern-star 'replace)
 

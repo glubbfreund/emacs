@@ -1,4 +1,4 @@
-;; Enable modded modeline
+;; Enable and configure mood-line
 (require 'mood-line)
 (mood-line-mode)
 
@@ -6,18 +6,13 @@
 (require 'which-key)
 (which-key-mode)
 
-;; enable nov.el for epub format
+;; Enable nov.el for epub format
 (require 'nov)
 (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
 
-;; to use emacs as a pdf reader
+;; To use emacs as a pdf reader
 (require 'pdf-tools)
 (pdf-loader-install)
-
-;; Undo tree settings - global mode and dont spam my fs
-(require 'undo-tree)
-(global-undo-tree-mode)
-(setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
 
 ;; Copilot settings
 (require 'copilot)
@@ -34,8 +29,8 @@
 (add-to-list 'copilot-indentation-alist '(text-mode 2))
 
 ;; For general ChatGPT usage
-(global-set-key (kbd "C-c k o") 'gptel)
-(global-set-key (kbd "C-c k a") 'gptel-send)
 (require 'gptel)
 (setq auth-sources '("~/.authinfo"))
 (setq gptel-api-key (auth-source-pick-first-password :host "api.openai.com"))
+(global-set-key (kbd "C-c k o") 'gptel)
+(global-set-key (kbd "C-c k a") 'gptel-send)

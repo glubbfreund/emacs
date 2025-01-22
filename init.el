@@ -1,8 +1,8 @@
-;; load custom file and let emacs spam there
+;; Load custom file and let emacs spam there
 (setq custom-file (concat user-emacs-directory "auto.el"))
 (load custom-file)
 
-;; adding the package archives
+;; Adding the package archives
 (package-initialize)
 (setq package-archives
       '(("GNU ELPA"     . "https://elpa.gnu.org/packages/")
@@ -13,14 +13,14 @@
         ("GNU ELPA"     . 5)
         ("MELPA"        . 0)))
 
-;; fetch the list of packages available
+;; Fetch the list of packages available
 (unless package-archive-contents
   (package-refresh-contents))
 
-;; install the missing packages
+;; Install the missing packages
 (package-install-selected-packages)
 
-;; remove not used features
+;; Remove not used features
 (scroll-bar-mode -1)
 (put 'dired-find-alternate-file 'disabled nil)
 (menu-bar-mode -1)
@@ -35,7 +35,7 @@
       inhibit-startup-buffer-menu t
       ring-bell-function 'ignore)
 
-;; activate some wanted features
+;; Activate some wanted features
 (global-auto-revert-mode 1)
 (save-place-mode 1)
 (ido-mode 1)
@@ -63,15 +63,18 @@
 			   "^\*log-edit-files\*" "^\*changes to\*" "^\*undo-tree\*"
 			   "^\*nov unzip\*" "^\*Async-native-compile-log\*"))
 
-;; clean instruction messages
+;; Kill buffer without asking which one first
+(global-set-key (kbd "C-x k") 'kill-current-buffer)
+
+;; Clean instruction messages
 (defun display-startup-echo-area-message () (message ""))
 
-;; display file numbers only in programming mode
+;; Display file numbers only in programming mode
 (defun my-display-numbers-hook ()
   (display-line-numbers-mode 1))
 (add-hook 'prog-mode-hook 'my-display-numbers-hook)
 
-;; automatically kill term buffer if process exits
+;; Automatically kill term buffer if process exits
 (defun my-term-handle-exit (&optional process-name msg)
   (message "%s | %s" process-name msg)
   (kill-buffer (current-buffer)))
@@ -81,7 +84,7 @@
 (add-hook 'before-save-hook
           'delete-trailing-whitespace)
 
-;; don't show ANSI escape sequences in compile buffer (Windows issue)
+;; Don't show ANSI escape sequences in compile buffer (Windows issue)
 (add-hook 'compilation-filter-hook 'ansi-color-compilation-filter)
 
 ;; Eglot releated settings
