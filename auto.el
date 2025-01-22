@@ -19,7 +19,8 @@
  '(display-battery-mode t)
  '(display-line-numbers-type 'relative)
  '(global-display-line-numbers-mode nil)
+ '(gnus-init-file "~/.emacs.d/gnus.el")
  '(package-selected-packages
-   '(which-key pdf-tools mood-line eradio nov org-modern eglot-java gptel copilot evil-collection evil markdown-mode undo-tree gruber-darker-theme))
+   '(devil which-key pdf-tools mood-line eradio nov org-modern eglot-java gptel copilot markdown-mode undo-tree gruber-darker-theme))
  '(tool-bar-mode nil)
  '(warning-suppress-types '((initialization))))

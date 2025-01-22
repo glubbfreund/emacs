@@ -1,4 +1,13 @@
-/*/
+/.cache
+/auto-save-list
+/eln-cache
+/elpa
+/eshell
+/server
+/transient
+/tutorial
+/undo
+/url
 history
 ido.last
 places
