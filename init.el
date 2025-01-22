@@ -58,9 +58,10 @@
       ido-use-filename-at-point 'guess
       ido-use-url-at-point nil
       ido-ignore-buffers '("\\` " "^\*Completions\*" "^\*Messages\*" "^\*copilot events\*"
-			   "^\*Quail Completions\*" "^.newsrc-dribble" "^\*EGLOT\*" "^\*Warnings\*"
-			   "^\*vc-git\*" "^\*vc\*" "^\*vc-diff\*" "^\*log-edit-files\*"
-			   "^\*changes to\*" "^\*undo-tree\*" "^\*nov unzip\*" "^\*Async-native-compile-log\*"))
+			   "^\*Quail Completions\*" "^.newsrc-dribble" "^\*EGLOT\*"
+			   "^\*Warnings\*" "^\*vc-git\*" "^\*vc\*" "^\*vc-diff\*"
+			   "^\*log-edit-files\*" "^\*changes to\*" "^\*undo-tree\*"
+			   "^\*nov unzip\*" "^\*Async-native-compile-log\*"))
 
 ;; clean instruction messages
 (defun display-startup-echo-area-message () (message ""))
@@ -90,9 +91,8 @@
 (add-hook 'java-mode-hook 'eglot-java-mode)
 
 ;; Evil mode, org/writing and plugins
-;; (load "~/.emacs.d/evil.el")
-(load "~/.emacs.d/org.el")
 (load "~/.emacs.d/plugins.el")
+(load "~/.emacs.d/org.el")
 (load "~/.emacs.d/eradio.el")
 
 ;; Win specific settings
