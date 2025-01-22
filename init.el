@@ -97,4 +97,4 @@
 
 ;; Win specific settings
 (when (eq system-type 'windows-nt)
-    (load "~/.emacs.d/windows.el"))
+  (load "~/.emacs.d/windows.el"))
