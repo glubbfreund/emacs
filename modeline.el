@@ -8,7 +8,6 @@
                 mode-line-remote
 		" "
                 (:eval (propertize (format-mode-line '("%e" mode-line-buffer-identification)) 'face 'bold))
-		" "
 		mode-line-modes
 		(:eval
                  (let* ((mode (format-mode-line '("%e"
