@@ -13,15 +13,16 @@
 		mode-line-position
 		"   "
 		mode-line-modes
-		mode-line-misc-info
 		(:eval
                  (let* ((mode (format-mode-line '("%e"
-						  mode-line-misc-info
 						  "   "
 						  (vc-mode vc-mode)
 						  " "
 						  )))
+			(misc (format-mode-line '("%e"
+						   mode-line-misc-info
+						   )))
                         (space `((space :align-to (- (+ right right-fringe right-margin)
-                                                     ,(string-width mode))))))
-                   (concat (propertize " " 'display space) mode)))
+                                                     ,(+ (string-width mode) (string-width misc)))))))
+                   (concat (propertize " " 'display space)(propertize misc 'face 'shadow) mode)))
 		))
