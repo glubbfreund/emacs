@@ -34,7 +34,6 @@
       vc-suppress-confirm t
       inhibit-startup-buffer-menu t
       ring-bell-function 'ignore)
-
 ;; Activate some wanted features
 (global-auto-revert-mode 1)
 (save-place-mode 1)
@@ -53,7 +52,10 @@
       auth-sources "~/.authinfo"
       ange-ftp-netrc-filename auth-sources
       printer-name "HL3040CN"
+      doc-view-continuous t
+      doc-view-resolution 400
       delete-by-moving-to-trash t
+      dired-dwim-target t
       ido-enable-flex-matching t
       ido-use-filename-at-point 'guess
       ido-use-url-at-point nil
@@ -62,6 +64,19 @@
 			   "^\*Warnings\*" "^\*vc-git\*" "^\*vc\*" "^\*vc-diff\*"
 			   "^\*log-edit-files\*" "^\*changes to\*" "^\*undo-tree\*"
 			   "^\*nov unzip\*" "^\*Async-native-compile-log\*"))
+
+;; I dont want to trash on remote directories
+(defun cfg-dired-setup ()
+  "Custom setup hook for `dired-mode'."
+  (interactive)
+  (cfg-dired-setup--avoid-remote-trash))
+(defun cfg-dired-setup--avoid-remote-trash ()
+  (when (and (boundp 'dired-directory)
+             dired-directory
+             (file-remote-p dired-directory))
+    (setq-local delete-by-moving-to-trash nil)))
+
+(add-hook 'dired-mode-hook #'cfg-dired-setup)
 
 ;; Kill buffer without asking which one first
 (global-set-key (kbd "C-x k") 'kill-current-buffer)
@@ -94,6 +109,7 @@
 (add-hook 'java-mode-hook 'eglot-java-mode)
 
 ;; Evil mode, org/writing and plugins
+(load "~/.emacs.d/modeline.el")
 (load "~/.emacs.d/plugins.el")
 (load "~/.emacs.d/org.el")
 (load "~/.emacs.d/eradio.el")
