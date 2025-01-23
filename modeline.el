@@ -16,8 +16,9 @@
 		mode-line-misc-info
 		(:eval
                  (let* ((mode (format-mode-line '("%e"
-						  (vc-mode vc-mode)
 						  mode-line-misc-info
+						  "   "
+						  (vc-mode vc-mode)
 						  " "
 						  )))
                         (space `((space :align-to (- (+ right right-fringe right-margin)

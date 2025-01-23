@@ -2,6 +2,10 @@
 (require 'which-key)
 (which-key-mode)
 
+;; Nov is a package for reading epubs
+(require 'nov)
+(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+
 ;; Copilot settings
 (require 'copilot)
 (add-hook 'prog-mode-hook 'copilot-mode)
