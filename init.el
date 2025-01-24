@@ -65,7 +65,7 @@
 			   "^\*log-edit-files\*" "^\*changes to\*" "^\*undo-tree\*"
 			   "^\*nov unzip\*" "^\*Async-native-compile-log\*"))
 
-;; I dont want to trash on remote directories
+;; I dont want ton trash on remote directories
 (defun cfg-dired-setup ()
   "Custom setup hook for `dired-mode'."
   (interactive)

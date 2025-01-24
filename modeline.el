@@ -1,6 +1,10 @@
 ;; My rewritten Vanilla modeline, pretty much default
 ;; but cleaned up a bit
 
+(defun do-percentage-esc(str)
+  "Escape all '%' in STR to ensure correct formatting."
+  (replace-regexp-in-string "%" "%%" str))
+
 (setq-default mode-line-format
               '("%e"
                 mode-line-front-space ;;mode-line-mule-info & mode-line-client removed
@@ -12,10 +16,10 @@
 		(:eval
                  (let* ((mode (format-mode-line '("%e"
 						  "  "
-						  mode-line-position)))
-			(misc (format-mode-line '("%e"
-						  mode-line-misc-info
 						  (vc-mode vc-mode))))
+			(misc (do-percentage-esc (format-mode-line '("%e"
+						  mode-line-misc-info
+						  mode-line-position))))
                         (space `((space :align-to (- (+ right right-fringe right-margin)
                                                      ,(+ (string-width mode) (string-width misc)))))))
                    (concat (propertize " " 'display space)
