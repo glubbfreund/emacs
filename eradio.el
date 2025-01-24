@@ -29,7 +29,7 @@
 
 ;; Show radio station in modeline if playing
 (defun eradio-update-modeline ()
-  (defvar eradio-modeline-format "o/%s")
+  (defvar eradio-modeline-format "o/%s  ")
   (if eradio--process
     (let ((station-name (eradio-get-name-from-url eradio-current-channel)))
         (setq global-mode-string

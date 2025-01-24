@@ -4,7 +4,7 @@
 (defun clean-misc-modeline (str)
   "Escape all '%' in STR and remove '[' and ']' to ensure correct formatting."
   (let ((escaped-str (replace-regexp-in-string "%" "%%" str)))
-    (let ((trimmed-escaped-str (replace-regexp-in-string "  +" "  " escaped-str)))
+    (let ((trimmed-escaped-str (replace-regexp-in-string "   +" "  " escaped-str)))
       (replace-regexp-in-string "\\[\\|\\]" "" trimmed-escaped-str))))
 
 (setq-default mode-line-format
