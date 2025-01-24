@@ -1,7 +1,3 @@
-;; For the beginning I need whichkey
-(require 'which-key)
-(which-key-mode)
-
 ;; Nov is a package for reading epubs
 (require 'nov)
 (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
