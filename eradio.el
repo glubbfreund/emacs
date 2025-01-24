@@ -29,12 +29,13 @@
 
 ;; Show radio station in modeline if playing
 (defun eradio-update-modeline ()
+  (defvar eradio-modeline-format "o/%s")
   (if eradio--process
     (let ((station-name (eradio-get-name-from-url eradio-current-channel)))
         (setq global-mode-string
-              (add-to-list 'global-mode-string (format "o/%s     " station-name) 'APPEND)))
+              (add-to-list 'global-mode-string (format eradio-modeline-format station-name) 'APPEND)))
     (setq global-mode-string
-          (delete (format "o/%s     " (eradio-get-name-from-url eradio-current-channel)) global-mode-string))))
+          (delete (format eradio-modeline-format (eradio-get-name-from-url eradio-current-channel)) global-mode-string))))
 
 ;; Aktualisiere die Modeline alle paar Sekunden
 (run-with-timer 0 5 'eradio-update-modeline)

@@ -1,9 +1,11 @@
 ;; My rewritten Vanilla modeline, pretty much default
 ;; but cleaned up a bit
 
-(defun do-percentage-esc(str)
-  "Escape all '%' in STR to ensure correct formatting."
-  (replace-regexp-in-string "%" "%%" str))
+(defun clean-misc-modeline (str)
+  "Escape all '%' in STR and remove '[' and ']' to ensure correct formatting."
+  (let ((escaped-str (replace-regexp-in-string "%" "%%" str)))
+    (let ((trimmed-escaped-str (replace-regexp-in-string "  +" "  " escaped-str)))
+      (replace-regexp-in-string "\\[\\|\\]" "" trimmed-escaped-str))))
 
 (setq-default mode-line-format
               '("%e"
@@ -17,7 +19,7 @@
                  (let* ((mode (format-mode-line '("%e"
 						  "  "
 						  (vc-mode vc-mode))))
-			(misc (do-percentage-esc (format-mode-line '("%e"
+			(misc (clean-misc-modeline (format-mode-line '("%e"
 						  mode-line-misc-info
 						  mode-line-position))))
                         (space `((space :align-to (- (+ right right-fringe right-margin)
