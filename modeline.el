@@ -18,7 +18,8 @@
 		(:eval
                  (let* ((mode (format-mode-line '("%e"
 						  "  "
-						  (vc-mode vc-mode))))
+						  (vc-mode vc-mode)
+						  mode-line-end-spaces)))
 			(misc (clean-misc-modeline (format-mode-line '("%e"
 						  mode-line-misc-info
 						  mode-line-position))))
