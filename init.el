@@ -40,6 +40,7 @@
 (ido-mode 1)
 (ido-everywhere 1)
 (savehist-mode 1)
+(delete-selection-mode 1)
 (ffap-bindings)
 (prefer-coding-system 'utf-8)
 (setq indent-tabs-mode t
@@ -55,7 +56,7 @@
       doc-view-continuous t
       doc-view-resolution 400
       delete-by-moving-to-trash t
-      dired-dwim-target t
+      delete-selection-mode t
       ido-enable-flex-matching t
       ido-use-filename-at-point 'guess
       ido-use-url-at-point nil
