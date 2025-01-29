@@ -57,6 +57,7 @@
       doc-view-resolution 400
       delete-by-moving-to-trash t
       delete-selection-mode t
+      dired-dwim-target t
       ido-enable-flex-matching t
       ido-use-filename-at-point 'guess
       ido-use-url-at-point nil
