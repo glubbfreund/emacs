@@ -30,6 +30,7 @@
   (org-export-with-smart-quotes t)
   (org-export-date-timestamp-format "%d %B %Y"))
 
+;; Nicer and more modern look in org
 (use-package org-modern
   :init
   (global-org-modern-mode)
