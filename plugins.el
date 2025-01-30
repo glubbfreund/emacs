@@ -1,3 +1,9 @@
+;; Use and autoinstall my favourite theme
+(use-package gruber-darker-theme
+  :config
+  (load-theme 'gruber-darker t)
+  :ensure t)
+
 ;; Nov is a package for reading epubs
 (use-package nov
   :init
