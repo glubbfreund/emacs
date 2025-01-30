@@ -16,11 +16,14 @@
 (add-to-list 'copilot-indentation-alist '(text-mode 2))
 
 ;; For general ChatGPT usage
-(require 'gptel)
-(setq auth-sources '("~/.authinfo"))
-(setq gptel-api-key (auth-source-pick-first-password :host "api.openai.com"))
-(global-set-key (kbd "C-c k o") 'gptel)
-(global-set-key (kbd "C-c k a") 'gptel-send)
+(use-package gptel
+  :init
+  (setq auth-sources '("~/.authinfo")
+	gptel-api-key (auth-source-pick-first-password :host "api.openai.com"))
+  :bind
+  ("C-c k o" . gptel)
+  ("C-c k a" . gptel-send)
+  :ensure t)
 
 ;; Install and configure eradio
 (use-package eradio
