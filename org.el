@@ -18,12 +18,10 @@
   (ispell-change-dictionary "en")
   (flyspell-buffer))
 
-;; Org-mode settings
-(setq org-hide-emphasis-markers t
-	  org-modern-star 'replace)
-
 ;; Org Export Settings
 (use-package org
+  :init
+  (setq org-hide-emphasis-markers t)
   :custom
   (org-export-with-drawers nil)
   (org-export-with-todo-keywords nil)
@@ -32,5 +30,9 @@
   (org-export-with-smart-quotes t)
   (org-export-date-timestamp-format "%d %B %Y"))
 
-;; enable org-modern
-(with-eval-after-load 'org (global-org-modern-mode))
+(use-package org-modern
+  :init
+  (global-org-modern-mode)
+  :config
+  (setq org-modern-star 'replace)
+  :ensure t)
