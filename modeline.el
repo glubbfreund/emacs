@@ -23,8 +23,8 @@
 		mode-line-modes
 		(:eval
                  (let* ((mode (clean-misc-modeline (format-mode-line '("%e"
-								       (vc-mode vc-mode)
-								       " "))))
+							       (vc-mode vc-mode)
+							       (:eval (if vc-mode " " ""))))))
 			(misc (clean-misc-modeline (format-mode-line '("%e"
 								       mode-line-misc-info
 								       mode-line-position))))
