@@ -13,13 +13,6 @@
         ("GNU ELPA"     . 5)
         ("MELPA"        . 0)))
 
-;; Fetch the list of packages available
-(unless package-archive-contents
-  (package-refresh-contents))
-
-;; Install the missing packages
-(package-install-selected-packages)
-
 ;; Remove not used features
 (scroll-bar-mode -1)
 (put 'dired-find-alternate-file 'disabled nil)
