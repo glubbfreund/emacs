@@ -13,23 +13,26 @@
 
 (setq-default mode-line-format
               '("%e"
-                mode-line-front-space
-		mode-line-mule-info
-                mode-line-modified
-                mode-line-remote
+		mode-line-front-space
+		(:eval (propertize (format-mode-line '("%e"
+						       mode-line-mule-info
+						       mode-line-modified
+						       mode-line-remote))
+				   'face 'shadow))
 		" "
-                (:eval (string-trim (propertize (format-mode-line '("%e" mode-line-buffer-identification)) 'face 'bold)))
+                (:eval (string-trim (propertize (format-mode-line '("%e" mode-line-buffer-identification)) 'face 'warning)))
 		" "
-		mode-line-modes
+		(:eval (clean-misc-modeline (format-mode-line '("%e" mode-line-position))))
+		(:eval (string-trim (format-mode-line '("%e" (vc-mode vc-mode)))))
 		(:eval
-                 (let* ((mode (clean-misc-modeline (format-mode-line '("%e"
-							       (vc-mode vc-mode)
-							       (:eval (if vc-mode " " ""))))))
+                 (let* ((mode (string-trim (format-mode-line '("%e"
+							       mode-line-modes))))
 			(misc (clean-misc-modeline (format-mode-line '("%e"
+								       " "
 								       mode-line-misc-info
-								       mode-line-position))))
+								       " "))))
                         (space `((space :align-to (- (+ right right-fringe right-margin)
                                                      ,(+ (string-width mode) (string-width misc)))))))
                    (concat (propertize " " 'display space)
-			   (propertize misc 'face 'shadow)
-			   mode)))))
+			   mode
+			   (propertize misc 'face 'shadow))))))
