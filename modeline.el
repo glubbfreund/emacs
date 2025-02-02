@@ -3,8 +3,9 @@
 
 (defun clean-modeline-str (str)
   "Trim whitespace and remove brackets in STR for modeline."
-  (let ((cleaned (replace-regexp-in-string "\\[\\|\\]" "" str)))
-    (replace-regexp-in-string " +" " " (string-trim cleaned))))
+  (let ((fixed-str (replace-regexp-in-string "%" "%%" str)))
+    (let ((cleaned (replace-regexp-in-string "\\[\\|\\]" "" fixed-str)))
+      (replace-regexp-in-string " +" " " (string-trim cleaned)))))
 
 (setq-default mode-line-format
               '("%e"
