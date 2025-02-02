@@ -10,21 +10,6 @@
   (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
   :ensure t)
 
-;; Copilot settings
-(use-package copilot
-  :bind
-  ("C-c c <tab>" . copilot-accept-completion)
-  ("C-c c TAB" . copilot-accept-completion)
-  ("C-c c w" . copilot-accept-completion-by-word)
-  ("C-c c n" . copilot-next-completion)
-  ("C-c c p" . copilot-previous-completion)
-  :config
-  (add-hook 'prog-mode-hook 'copilot-mode)
-  (add-to-list 'copilot-indentation-alist '(prog-mode 2))
-  (add-to-list 'copilot-indentation-alist '(org-mode 2))
-  (add-to-list 'copilot-indentation-alist '(text-mode 2))
-  :ensure t)
-
 ;; For general ChatGPT usage
 (use-package gptel
   :init
