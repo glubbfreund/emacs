@@ -34,6 +34,7 @@
 (ido-everywhere 1)
 (savehist-mode 1)
 (delete-selection-mode 1)
+(which-key-mode t)
 (ffap-bindings)
 (prefer-coding-system 'utf-8)
 (setq indent-tabs-mode t
