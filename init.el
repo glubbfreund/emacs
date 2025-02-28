@@ -37,6 +37,7 @@
 (which-key-mode t)
 (ffap-bindings)
 (prefer-coding-system 'utf-8)
+(windmove-default-keybindings)
 (setq indent-tabs-mode t
       tab-width 4
       gdb-many-windos 1
