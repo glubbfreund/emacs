@@ -78,6 +78,12 @@
 ;; Kill buffer without asking which one first
 (global-set-key (kbd "C-x k") 'kill-current-buffer)
 
+;;resizing windows
+(global-set-key (kbd "S-C-<left>")  'shrink-window-horizontally)
+(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "S-C-<down>")  'shrink-window)
+(global-set-key (kbd "S-C-<up>")    'enlarge-window)
+
 ;; Clean instruction messages
 (defun display-startup-echo-area-message () (message ""))
 
