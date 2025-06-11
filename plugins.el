@@ -4,6 +4,10 @@
   (load-theme 'gruber-darker t)
   :ensure t)
 
+;; Allow sudo commands
+(use-package sudo-edit
+  :ensure t)
+
 ;; EMMS setup
 (use-package emms
   :config
