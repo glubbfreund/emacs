@@ -1,0 +1,17 @@
+/.cache
+/auto-save-list
+/eln-cache
+/elpa
+/emms
+/eshell
+/server
+/transient
+/tutorial
+/undo
+/url
+history
+tramp
+ido.last
+places
+network-security.data
+nov-places
