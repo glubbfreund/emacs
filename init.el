@@ -31,6 +31,7 @@
       vc-suppress-confirm t
       inhibit-startup-buffer-menu t
       ring-bell-function 'ignore)
+
 ;; Activate some wanted features
 (global-auto-revert-mode 1)
 (save-place-mode 1)
