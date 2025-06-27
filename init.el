@@ -53,6 +53,7 @@
       auth-sources "~/.authinfo"
       ange-ftp-netrc-filename auth-sources
       printer-name "HL3040CN"
+      rmail-file-name "~/.emacs.d/.RMAIL"
       doc-view-continuous t
       doc-view-resolution 400
       delete-by-moving-to-trash t
