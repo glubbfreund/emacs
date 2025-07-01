@@ -54,6 +54,10 @@
       ange-ftp-netrc-filename auth-sources
       printer-name "HL3040CN"
       rmail-file-name "~/.emacs.d/.RMAIL"
+      message-directory "~/.emacs.d/mail/"
+      gnus-directory "~/.emacs.d/news/"
+      nnfolder-directory "~/.emacs.d/mail/archive"
+      gnus-startup-file "~/.emacs.d/.newsrc"
       doc-view-continuous t
       doc-view-resolution 400
       delete-by-moving-to-trash t
