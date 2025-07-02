@@ -51,6 +51,8 @@
 		       ("gwene.de.golem.open-source" . "Golem Open Source")
 		       ("gwene.net.eurogamer" . "Eurogamer")
 		       ("gwene.de.linuxnews.de" . "Linuxnews")
-		       ("gwene.de.tagesschau". "Tagesschau")))
+		       ("gwene.de.tagesschau". "Tagesschau")
+		       ("gwene.de.kicker.rss.news.aktuell". "Kicker")
+		       ("gmane.linux.arch.announce". "Arch Linux")))
 
 (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
