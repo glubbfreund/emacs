@@ -13,9 +13,8 @@
         ("GNU ELPA"     . 5)
         ("MELPA"        . 0)))
 
-;; Frame size set client friendly
-(add-to-list 'default-frame-alist '(height . 35))
-(add-to-list 'default-frame-alist '(width . 160))
+;; Frame size set
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; Remove not used features
 (scroll-bar-mode -1)
@@ -72,7 +71,7 @@
 			   "^\*log-edit-files\*" "^\*changes to\*" "^\*undo-tree\*"
 			   "^\*nov unzip\*" "^\*Async-native-compile-log\*"))
 
-;; I dont want ton trash on remote directories
+;; I dont want to trash on remote directories
 (defun cfg-dired-setup ()
   "Custom setup hook for `dired-mode'."
   (interactive)
