@@ -52,7 +52,8 @@
 		       ("gwene.net.eurogamer" . "Eurogamer")
 		       ("gwene.de.linuxnews.de" . "Linuxnews")
 		       ("gwene.de.tagesschau". "Tagesschau")
-		       ("gwene.de.kicker.rss.news.aktuell". "Kicker")
+		       ("gwene.de.sportschau.fussball". "Sportschau Fußball")
+		       ("gwene.gr.kathimerini.latestnews". "Kathimerini")
 		       ("gmane.linux.arch.announce". "Arch Linux")))
 
 (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)
