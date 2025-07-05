@@ -52,11 +52,11 @@
       auth-sources "~/.authinfo"
       ange-ftp-netrc-filename auth-sources
       printer-name "HL3040CN"
-      rmail-file-name "~/.emacs.d/.RMAIL"
-      message-directory "~/.emacs.d/mail/"
-      gnus-directory "~/.emacs.d/news/"
-      nnfolder-directory "~/.emacs.d/mail/archive"
-      gnus-startup-file "~/.emacs.d/.newsrc"
+      rmail-file-name (concat user-emacs-directory ".RMAIL")
+      message-directory (concat user-emacs-directory "mail")
+      gnus-directory (concat user-emacs-directory "news")
+      nnfolder-directory (concat user-emacs-directory "mail/archive")
+      gnus-startup-file (concat user-emacs-directory ".newsrc")
       doc-view-continuous t
       doc-view-resolution 400
       delete-by-moving-to-trash t
@@ -120,11 +120,11 @@
 (add-hook 'c++-mode-hook 'eglot-ensure)
 (add-hook 'java-mode-hook 'eglot-java-mode)
 
-;; Evil mode, org/writing and plugins
-(load "~/.emacs.d/modeline.el")
-(load "~/.emacs.d/plugins.el")
-(load "~/.emacs.d/org.el")
+;; Loading all the oder modules
+(load (concat user-emacs-directory "modeline.el"))
+(load (concat user-emacs-directory "plugins.el"))
+(load (concat user-emacs-directory "org.el"))
 
 ;; Win specific settings
 (when (eq system-type 'windows-nt)
-  (load "~/.emacs.d/windows.el"))
+  (load (concat user-emacs-directory "windows.el")))

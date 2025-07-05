@@ -26,7 +26,7 @@
  '(display-time-24hr-format t)
  '(display-time-default-load-average nil)
  '(display-time-mode t)
- '(gnus-init-file "~/.emacs.d/gnus.el")
+ '(gnus-init-file (concat user-emacs-directory "gnus.el"))
  '(package-selected-packages
    '(eglot-java emms gptel gruber-darker-theme markdown-mode nov
 		org-modern sudo-edit))
