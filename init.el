@@ -63,6 +63,7 @@
       delete-selection-mode t
       dired-dwim-target t
       ido-enable-flex-matching t
+      gdb-many-windows t
       ido-use-filename-at-point 'guess
       ido-use-url-at-point nil
       ido-ignore-buffers '("\\` " "^\*Completions\*" "^\*Messages\*" "^\*copilot events\*"
@@ -87,11 +88,18 @@
 ;; Kill buffer without asking which one first
 (global-set-key (kbd "C-x k") 'kill-current-buffer)
 
-;;resizing windows
+;; Resizing windows
 (global-set-key (kbd "S-C-<left>")  'shrink-window-horizontally)
 (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
 (global-set-key (kbd "S-C-<down>")  'shrink-window)
 (global-set-key (kbd "S-C-<up>")    'enlarge-window)
+
+;; Custom keybinds
+(global-set-key (kbd "C-c c") 'compile)
+(global-set-key (kbd "C-c t") 'term)
+(global-set-key (kbd "C-c r") 'comint-run)
+(global-set-key (kbd "C-c g") 'gdb)
+
 
 ;; Clean instruction messages
 (defun display-startup-echo-area-message () (message ""))
