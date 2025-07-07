@@ -54,6 +54,7 @@
 		       ("gwene.de.tagesschau". "Tagesschau")
 		       ("gwene.de.sportschau.fussball". "Sportschau Fußball")
 		       ("gwene.gr.kathimerini.latestnews". "Kathimerini")
-		       ("gmane.linux.arch.announce". "Arch Linux")))
+		       ("gmane.linux.arch.announce". "Arch Linux Announce")
+		       ("gmane.linux.arch.general". "Arch Linux General")))
 
 (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)

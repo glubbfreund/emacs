@@ -51,6 +51,7 @@
       pr-temp-dir "/tmp"
       auth-sources "~/.authinfo"
       ange-ftp-netrc-filename auth-sources
+      ange-ftp-try-passive-mode t
       printer-name "HL3040CN"
       rmail-file-name (concat user-emacs-directory ".RMAIL")
       message-directory (concat user-emacs-directory "mail")
