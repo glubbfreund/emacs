@@ -38,7 +38,6 @@
 (ido-everywhere 1)
 (savehist-mode 1)
 (delete-selection-mode 1)
-(which-key-mode t)
 (ffap-bindings)
 (prefer-coding-system 'utf-8)
 (windmove-default-keybindings)
@@ -72,6 +71,12 @@
 			   "^\*Warnings\*" "^\*vc-git\*" "^\*vc\*" "^\*vc-diff\*"
 			   "^\*log-edit-files\*" "^\*changes to\*" "^\*undo-tree\*"
 			   "^\*nov unzip\*" "^\*Async-native-compile-log\*"))
+
+;; C Style
+(defun c-style-settings()
+    (c-set-style "ellemtel")
+    (setq c-basic-offset 4))
+(add-hook 'c-mode-common-hook #'c-style-settings)
 
 ;; I dont want to trash on remote directories
 (defun cfg-dired-setup ()
