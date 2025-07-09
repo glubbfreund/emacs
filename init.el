@@ -103,9 +103,7 @@
 ;; Custom keybinds
 (global-set-key (kbd "C-c c") 'compile)
 (global-set-key (kbd "C-c t") 'term)
-(global-set-key (kbd "C-c r") 'comint-run)
 (global-set-key (kbd "C-c g") 'gdb)
-
 
 ;; Clean instruction messages
 (defun display-startup-echo-area-message () (message ""))
