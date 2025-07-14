@@ -55,6 +55,8 @@
 		       ("gwene.de.sportschau.fussball". "Sportschau Fußball")
 		       ("gwene.gr.kathimerini.latestnews". "Kathimerini")
 		       ("gmane.linux.arch.announce". "Arch Linux Announce")
-		       ("gmane.linux.arch.general". "Arch Linux General")))
+		       ("gmane.linux.arch.general". "Arch Linux General")
+		       ("gmane.comp.xfce.announce". "Xfce Announce")
+		       ("gmane.comp.xfce.user". "Xfce User")))
 
 (add-hook 'gnus-group-mode-hook 'gnus-topic-mode)

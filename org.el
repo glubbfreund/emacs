@@ -12,11 +12,6 @@
   (ispell-change-dictionary "el_GR")
   (flyspell-buffer))
 (global-set-key (kbd "C-c s e") 'flyspell-english)
-(defun flyspell-english ()
-  (interactive)
-  (flyspell-mode t)
-  (ispell-change-dictionary "en_GB")
-  (flyspell-buffer))
 
 ;; Org Export Settings
 (use-package org
