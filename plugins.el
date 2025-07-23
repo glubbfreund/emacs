@@ -12,9 +12,14 @@
 (use-package emms
   :config
   (require 'emms-setup)
-  (require 'emms-player-mplayer)
+  (cond
+   ((eq system-type 'windows-nt)
+    (require 'emms-player-mplayer)
+    (setq emms-player-list '(emms-player-mplayer)))
+   ((memq system-type '(gnu gnu/linux))
+    (require 'emms-player-mpv)
+    (setq emms-player-list '(emms-player-mpv))))
   (emms-all)
-  (setq emms-player-list '(emms-player-mplayer))
   :bind
   ("C-c e p" . emms-play-dired)
   ("C-c e s" . emms-stop)

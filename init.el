@@ -47,6 +47,7 @@
       history-length 500
       warning-minimum-level :error
       use-short-answers t
+      next-line-add-newlines t
       pr-temp-dir "/tmp"
       auth-sources "~/.authinfo"
       ange-ftp-netrc-filename auth-sources
