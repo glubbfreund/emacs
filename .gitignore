@@ -16,3 +16,5 @@ places
 network-security.data
 nov-places
 .RMAIL
+eglot-java-eclipse-jdt-cache/
+share/
