@@ -24,6 +24,7 @@
       smtpmail-debug-verb t
       gnus-agent nil
       gnus-message-archive-group nil
+      gnus-use-demon t
       gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\"]\"[#'()]")
 
 (setq gnus-group-line-format "%M%S%5y/%-5t: %uG %D\n")
@@ -32,6 +33,24 @@
     (if (null mapped-name)
         gnus-tmp-group
       (cdr mapped-name))))
+
+(when (eq system-type 'gnu/linux)
+  (defun gnus-notify-inbox ()
+      (let* ((inbox "nnimap+gmail:INBOX")
+             (unread (gnus-group-unread inbox)))
+        (when (and unread (> unread 0))
+          (call-process "notify-send" nil 0 nil
+                        "Gnus"
+			"-i" "mail"
+                        (format "Du hast %d neue Nachricht(en) im Posteingang." unread)))))
+(defun gnus-check-inbox-and-notify ()
+  (gnus-group-get-new-news)
+  (gnus-notify-inbox))
+(add-hook 'gnus-startup-hook
+  (lambda ()
+    (setq gnus-demon-timestep 60)
+    (gnus-demon-init)
+    (gnus-demon-add-handler 'gnus-check-inbox-and-notify 5 t))))
 
 (setq group-name-map '(("nnimap+gmail:INBOX" . "Posteingang")
                        ("nnimap+gmail:[Google Mail]/Gesendet" . "Gesendet")
