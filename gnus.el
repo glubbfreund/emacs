@@ -25,6 +25,7 @@
       gnus-agent nil
       gnus-message-archive-group nil
       gnus-use-demon t
+      gnus-always-read-dribble-file t
       gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\"]\"[#'()]")
 
 (setq gnus-group-line-format "%M%S%5y/%-5t: %uG %D\n")
