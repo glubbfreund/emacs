@@ -75,3 +75,14 @@
 ;; Need java for Minecraft modding
 (use-package eglot-java
   :ensure t)
+
+;; Company Mode
+(use-package company
+  :ensure t
+  :init
+  (global-company-mode)
+  :config
+  (setq company-minimum-prefix-length 1
+        company-idle-delay 2.5
+        company-selection-wrap-around t
+        company-tooltip-align-annotations t))
