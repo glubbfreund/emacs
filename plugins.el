@@ -27,11 +27,13 @@
          (t
           (message "No theme found for: %s" theme))))))
   (defun my/load-emacs-theme (theme)
-    "Load THEME only if it's not already enabled. Disable all other themes first."
-    (unless (member theme custom-enabled-themes)
+    "Load THEME if not already the only active theme."
+    (unless (and (memq theme custom-enabled-themes)
+                 (= (length custom-enabled-themes) 1))
       (mapc #'disable-theme custom-enabled-themes)
       (load-theme theme t)
-      (message "Emacs theme set to: %s" theme))))
+      (message "Emacs theme set to: %s" theme)))
+  (run-at-time nil my/xfce-theme-check-interval #'my/xfce-theme-sync))
 
 ;; Allow sudo commands
 (use-package sudo-edit
