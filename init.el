@@ -63,6 +63,8 @@
       delete-by-moving-to-trash t
       delete-selection-mode t
       dired-dwim-target t
+      global-auto-revert-non-file-buffers t
+      auto-revert-verbose nil
       ido-enable-flex-matching t
       gdb-many-windows t
       ido-use-filename-at-point 'guess
@@ -113,12 +115,6 @@
 (defun my-display-numbers-hook ()
   (display-line-numbers-mode 1))
 (add-hook 'prog-mode-hook 'my-display-numbers-hook)
-
-;; Automatically kill term buffer if process exits
-(defun my-term-handle-exit (&optional process-name msg)
-  (message "%s | %s" process-name msg)
-  (kill-buffer (current-buffer)))
-(advice-add 'term-handle-exit :after 'my-term-handle-exit)
 
 ;; Get rid of trailing whitespaces
 (add-hook 'before-save-hook
