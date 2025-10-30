@@ -27,10 +27,11 @@
          (t
           (message "No theme found for: %s" theme))))))
   (defun my/load-emacs-theme (theme)
-    "Load the current theme and disable others"
-    (mapc #'disable-theme custom-enabled-themes)
-    (load-theme theme t))
-  (run-at-time nil my/xfce-theme-check-interval #'my/xfce-theme-sync))
+    "Load THEME only if it's not already enabled. Disable all other themes first."
+    (unless (member theme custom-enabled-themes)
+      (mapc #'disable-theme custom-enabled-themes)
+      (load-theme theme t)
+      (message "Emacs theme set to: %s" theme))))
 
 ;; Allow sudo commands
 (use-package sudo-edit
@@ -78,11 +79,12 @@
 
 ;; Company Mode
 (use-package company
-  :ensure t
-  :init
-  (global-company-mode)
-  :config
-  (setq company-minimum-prefix-length 1
-        company-idle-delay 2.5
-        company-selection-wrap-around t
-        company-tooltip-align-annotations t))
+   :ensure t
+   :init
+   (global-company-mode)
+:config
+(setq company-minimum-prefix-length 1
+      company-idle-delay 4
+      company-selection-wrap-around t
+	eglot-autoshutdown t
+      company-tooltip-align-annotations t))
