@@ -107,8 +107,16 @@
 
 ;; Custom keybinds
 (global-set-key (kbd "C-c c") 'compile)
-(global-set-key (kbd "C-c t") 'vterm-other-window)
+(global-set-key (kbd "C-c t") 'term)
 (global-set-key (kbd "C-c g") 'gdb)
+
+;; Change to localdir with keybinding if tramp trapped to remote dir
+(defun my/switch-to-local ()
+  "Force current buffer to use a local working directory."
+  (interactive)
+  (setq default-directory "~")
+  (message "Working directory set to ~ (local)"))
+(global-set-key (kbd "C-c l") 'my/switch-to-local)
 
 ;; Clean instruction messages
 (defun display-startup-echo-area-message () (message ""))
