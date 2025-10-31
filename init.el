@@ -41,9 +41,9 @@
 (ffap-bindings)
 (prefer-coding-system 'utf-8)
 (windmove-default-keybindings)
-(setq indent-tabs-mode t
-      tab-width 4
-      history-length 500
+(setq-default indent-tabs-mode t
+              tab-width 4)
+(setq history-length 500
       warning-minimum-level :error
       use-short-answers t
       next-line-add-newlines t
@@ -60,7 +60,6 @@
       doc-view-continuous t
       doc-view-resolution 400
       delete-by-moving-to-trash t
-      delete-selection-mode t
       dired-dwim-target t
       global-auto-revert-non-file-buffers t
       dired-recursive-copies 'always
@@ -123,7 +122,7 @@
 
 ;; Display file numbers only in programming mode
 (defun my-display-numbers-hook ()
-d  (display-line-numbers-mode 1))
+  (display-line-numbers-mode 1))
 (add-hook 'prog-mode-hook 'my-display-numbers-hook)
 
 ;; Get rid of trailing whitespaces
