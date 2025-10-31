@@ -2,38 +2,53 @@
 (use-package gruber-darker-theme
   :ensure t)
 
+;; vterm if using linux
+(when (eq system-type 'gnu/linux)
+  (use-package vterm
+    :ensure t))
+
 ;; Auto theme if using linux
 (when (eq system-type 'gnu/linux)
-  (defvar my/xfce-theme-check-interval 30
-    "How often we check for theme change.")
-  (defvar my/xfce-current-theme ""
-    "Save current theme name.")
+  (defconst my/xfce-theme-check-interval 30
+    "How often we check for theme change (in seconds).")
+
+  (defvar my/xfce-current-theme nil
+    "Currently detected XFCE theme name.")
+
   (defun my/xfce-get-current-theme ()
-    "Read current theme."
-    (string-trim
-     (shell-command-to-string
-      "xfconf-query -c xsettings -p /Net/ThemeName 2>/dev/null")))
+    "Return the current XFCE theme name as a trimmed string, or nil if unavailable."
+    (let ((theme (string-trim
+                  (shell-command-to-string
+                   "xfconf-query -c xsettings -p /Net/ThemeName 2>/dev/null"))))
+      (if (string-empty-p theme) nil theme)))
+
+  (defun my/load-emacs-theme (theme-symbol)
+    "Load THEME-SYMBOL only if it's not already active."
+    (unless (and custom-enabled-themes
+                 (eq (car custom-enabled-themes) theme-symbol))
+      (mapc #'disable-theme custom-enabled-themes)
+      (load-theme theme-symbol t)
+      (message "Emacs theme set to: %s" theme-symbol)))
+
   (defun my/xfce-theme-sync ()
-    "Check sys theme and set it."
+    "Synchronize Emacs theme with XFCE theme, but only if changed."
     (let ((theme (my/xfce-get-current-theme)))
-      (unless (string= theme my/xfce-current-theme)
+      (when (and theme (not (string= theme my/xfce-current-theme)))
         (setq my/xfce-current-theme theme)
-        (message "Theme changed: %s" theme)
         (cond
          ((string= theme "Arc-Dark")
           (my/load-emacs-theme 'gruber-darker))
          ((string= theme "Arc-Lighter")
           (my/load-emacs-theme 'tsdh-light))
          (t
-          (message "No theme found for: %s" theme))))))
-  (defun my/load-emacs-theme (theme)
-    "Load THEME if not already the only active theme."
-    (unless (and (memq theme custom-enabled-themes)
-                 (= (length custom-enabled-themes) 1))
-      (mapc #'disable-theme custom-enabled-themes)
-      (load-theme theme t)
-      (message "Emacs theme set to: %s" theme)))
-  (run-at-time nil my/xfce-theme-check-interval #'my/xfce-theme-sync))
+          (message "No matching Emacs theme for XFCE theme: %s" theme))))))
+
+  ;; Initial sync immediately
+  (my/xfce-theme-sync)
+  ;; Then check periodically
+  (run-with-timer my/xfce-theme-check-interval
+                  my/xfce-theme-check-interval
+                  #'my/xfce-theme-sync))
 
 ;; Allow sudo commands
 (use-package sudo-edit

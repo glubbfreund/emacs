@@ -43,7 +43,6 @@
 (windmove-default-keybindings)
 (setq indent-tabs-mode t
       tab-width 4
-      gdb-many-windos 1
       history-length 500
       warning-minimum-level :error
       use-short-answers t
@@ -64,6 +63,9 @@
       delete-selection-mode t
       dired-dwim-target t
       global-auto-revert-non-file-buffers t
+      dired-recursive-copies 'always
+      dired-recursive-deletes 'top
+      large-file-warning-threshold nil
       auto-revert-verbose nil
       ido-enable-flex-matching t
       gdb-many-windows t
@@ -105,7 +107,7 @@
 
 ;; Custom keybinds
 (global-set-key (kbd "C-c c") 'compile)
-(global-set-key (kbd "C-c t") 'term)
+(global-set-key (kbd "C-c t") 'vterm-other-window)
 (global-set-key (kbd "C-c g") 'gdb)
 
 ;; Clean instruction messages
