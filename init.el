@@ -95,6 +95,16 @@
 
 (add-hook 'dired-mode-hook #'cfg-dired-setup)
 
+;; VC should use current dir if im within a repo
+(defun vc-dir-smart ()
+  "Open VC status for current repo if inside one, else prompt normally."
+  (interactive)
+  (let ((root (vc-root-dir)))
+    (if root
+        (vc-dir root)
+      (call-interactively #'vc-dir))))
+(global-set-key (kbd "C-x v d") #'vc-dir-smart)
+
 ;; Kill buffer without asking which one first
 (global-set-key (kbd "C-x k") 'kill-current-buffer)
 
