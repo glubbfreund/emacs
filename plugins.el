@@ -141,3 +141,7 @@ shell exits, the buffer is killed."
       company-selection-wrap-around t
 	eglot-autoshutdown t
       company-tooltip-align-annotations t))
+
+;; Magit Git Client
+(use-package magit
+  :ensure t)
