@@ -123,7 +123,7 @@
 
 ;; Display file numbers only in programming mode
 (defun my-display-numbers-hook ()
-  (display-line-numbers-mode 1))
+d  (display-line-numbers-mode 1))
 (add-hook 'prog-mode-hook 'my-display-numbers-hook)
 
 ;; Get rid of trailing whitespaces

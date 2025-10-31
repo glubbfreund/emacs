@@ -5,7 +5,8 @@
 ;; vterm if using linux
 (when (eq system-type 'gnu/linux)
   (use-package vterm
-    :ensure t))
+    :ensure t
+    :bind (("C-c t" . vterm))))
 
 ;; Auto theme if using linux
 (when (eq system-type 'gnu/linux)
