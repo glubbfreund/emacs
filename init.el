@@ -66,8 +66,9 @@
       dired-recursive-deletes 'top
       large-file-warning-threshold nil
       auto-revert-verbose nil
-      ido-enable-flex-matching t
       gdb-many-windows t
+	  tramp-remote-process-environment '("LANG=de_DE.UTF-8" "LC_ALL=de_DE.UTF-8")
+	  ido-enable-flex-matching t
       ido-use-filename-at-point 'guess
       ido-use-url-at-point nil
       ido-ignore-buffers '("\\` " "^\*Completions\*" "^\*Messages\*" "^\*copilot events\*"
