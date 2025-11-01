@@ -28,7 +28,7 @@
  '(display-time-mode t)
  '(gnus-init-file (concat user-emacs-directory "gnus.el"))
  '(package-selected-packages
-   '(company eat eglot-java emms gptel gruber-darker-theme magit
-			 markdown-mode nov org-modern sudo-edit vterm))
+   '(eat eglot-java emms gptel gruber-darker-theme markdown-mode nov
+		 org-modern sudo-edit vterm))
  '(tool-bar-mode nil)
  '(warning-suppress-types '((initialization))))
