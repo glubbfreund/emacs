@@ -37,9 +37,9 @@
       (when (and theme (not (string= theme my/xfce-current-theme)))
         (setq my/xfce-current-theme theme)
         (cond
-         ((string= theme "Arc-Dark")
+         ((string= theme "Arc-Dark-Custom")
           (my/load-emacs-theme 'gruber-darker))
-         ((string= theme "Arc-Lighter")
+         ((string= theme "Arc-Lighter-Custom")
           (my/load-emacs-theme 'tsdh-light))
          (t
           (message "No matching Emacs theme for XFCE theme: %s" theme))))))
