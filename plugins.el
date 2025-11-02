@@ -4,11 +4,11 @@
 
 ;; some behaviour we just want with linux
 (when (eq system-type 'gnu/linux)
-  ;; vterm, only compatible with linux
+  ;; Vterm is only compatible with gnu/linux
   (use-package vterm
     :ensure t
     :bind (("C-c v t" . vterm)
-		   ("C-c v o" . vterm-other-window))
+		   ("C-c v o" . vterm-other-window)))
 
   ;; Auto theme if using linux
   (defconst my/xfce-theme-check-interval 30
@@ -38,13 +38,15 @@
         (setq my/xfce-current-theme theme)
         (cond
          ((string= theme "Arc-Dark")
-          (my/load-emacs-theme 'gruber
+          (my/load-emacs-theme 'gruber-darker))
          ((string= theme "Arc-Lighter")
           (my/load-emacs-theme 'tsdh-light))
          (t
           (message "No matching Emacs theme for XFCE theme: %s" theme))))))
 
+  ;; Initial sync immediately
   (my/xfce-theme-sync)
+  ;; Then check periodically
   (run-with-timer my/xfce-theme-check-interval
                   my/xfce-theme-check-interval
                   #'my/xfce-theme-sync)
