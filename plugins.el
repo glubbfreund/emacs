@@ -6,8 +6,9 @@
 (when (eq system-type 'gnu/linux)
   (use-package vterm
     :ensure t
-    :bind (("C-c t" . vterm)
-		   ("C-c r" . run-in-vterm)))
+    :bind (("C-c v o" . vterm)
+		   ("C-c v w" . vterm-other-window)
+		   ("C-c v r" . run-in-vterm)))
   (defun run-in-vterm-kill (process event)
   "A process sentinel. Kills PROCESS's buffer if it is live."
   (let ((b (process-buffer process)))
