@@ -2,50 +2,15 @@
 (use-package gruber-darker-theme
   :ensure t)
 
-;; vterm if using linux
+;; some behaviour we just want with linux
 (when (eq system-type 'gnu/linux)
+  ;; vterm, only compatible with linux
   (use-package vterm
     :ensure t
-    :bind (("C-c v o" . vterm)
-		   ("C-c v w" . vterm-other-window)
-		   ("C-c v r" . run-in-vterm)))
-  (defun run-in-vterm-kill (process event)
-  "A process sentinel. Kills PROCESS's buffer if it is live."
-  (let ((b (process-buffer process)))
-    (and (buffer-live-p b)
-         (kill-buffer b))))
+    :bind (("C-c v t" . vterm)
+		   ("C-c v w" . vterm-other-window))
 
-  (defun run-in-vterm (command)
-	"Execute string COMMAND in a new vterm.
-
-Interactively, prompt for COMMAND with the current buffer's file
-name supplied. When called from Dired, supply the name of the
-file at point.
-
-Like `async-shell-command`, but run in a vterm for full terminal features.
-
-The new vterm buffer is named in the form `*foo bar.baz*`, the
-command and its arguments in earmuffs.
-
-When the command terminates, the shell remains open, but when the
-shell exits, the buffer is killed."
-	(interactive
-	 (list
-      (let* ((f (cond (buffer-file-name)
-                      ((eq major-mode 'dired-mode)
-                       (dired-get-filename nil t))))
-			 (filename (concat " " (shell-quote-argument (and f (file-relative-name f))))))
-		(read-shell-command "Terminal command: "
-							(cons filename 0)
-							(cons 'shell-command-history 1)
-							(list filename)))))
-	(with-current-buffer (vterm (concat "*" command "*"))
-      (set-process-sentinel vterm--process #'run-in-vterm-kill)
-      (vterm-send-string command)
-      (vterm-send-return))))
-
-;; Auto theme if using linux
-(when (eq system-type 'gnu/linux)
+  ;; Auto theme if using linux
   (defconst my/xfce-theme-check-interval 30
     "How often we check for theme change (in seconds).")
 
@@ -74,22 +39,20 @@ shell exits, the buffer is killed."
         (setq my/xfce-current-theme theme)
         (cond
          ((string= theme "Arc-Dark")
-          (my/load-emacs-theme 'gruber-darker))
+          (my/load-emacs-theme 'gruber
          ((string= theme "Arc-Lighter")
           (my/load-emacs-theme 'tsdh-light))
          (t
           (message "No matching Emacs theme for XFCE theme: %s" theme))))))
 
-  ;; Initial sync immediately
   (my/xfce-theme-sync)
-  ;; Then check periodically
   (run-with-timer my/xfce-theme-check-interval
                   my/xfce-theme-check-interval
-                  #'my/xfce-theme-sync))
+                  #'my/xfce-theme-sync)
 
-;; Allow sudo commands
-(use-package sudo-edit
-  :ensure t)
+  ;; Allow sudo commands if using linux
+  (use-package sudo-edit
+	:ensure t))
 
 ;; EMMS setup
 (use-package emms
