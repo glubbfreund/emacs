@@ -8,7 +8,7 @@
   (use-package vterm
     :ensure t
     :bind (("C-c v t" . vterm)
-		   ("C-c v w" . vterm-other-window))
+		   ("C-c v o" . vterm-other-window))
 
   ;; Auto theme if using linux
   (defconst my/xfce-theme-check-interval 30
