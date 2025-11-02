@@ -13,7 +13,6 @@
   ;; Auto theme if using linux
   (defconst my/xfce-theme-check-interval 30
     "How often we check for theme change (in seconds).")
-
   (defvar my/xfce-current-theme nil
     "Currently detected XFCE theme name.")
 
