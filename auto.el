@@ -22,7 +22,7 @@
  '(display-line-numbers-type 'relative)
  '(gnus-init-file (concat user-emacs-directory "gnus.el"))
  '(package-selected-packages
-   '(eat eglot-java emms gptel gruber-darker-theme markdown-mode nov
+   '(eglot-java emms gptel gruber-darker-theme nov
 		 org-modern sudo-edit vterm))
  '(tool-bar-mode nil)
  '(warning-suppress-types '((initialization))))
