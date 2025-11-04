@@ -39,7 +39,7 @@
         (cond
          ((string= theme "Arc-Dark-Custom")
           (my/load-emacs-theme 'gruber-darker))
-         ((string= theme "Arc-Lighter-Custom")
+         ((string= theme "Arc-Lighter")
           (my/load-emacs-theme 'tsdh-light))
          (t
           (message "No matching Emacs theme for XFCE theme: %s" theme))))))
